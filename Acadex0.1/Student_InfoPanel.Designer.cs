@@ -32,6 +32,7 @@
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -41,7 +42,7 @@
             this.chart1.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(23, 38);
+            this.chart1.Location = new System.Drawing.Point(23, 21);
             this.chart1.Name = "chart1";
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
@@ -52,11 +53,19 @@
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
             // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(24, 183);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(449, 300);
+            this.panel1.TabIndex = 1;
+            // 
             // Student_InfoPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.chart1);
             this.Name = "Student_InfoPanel";
             this.Size = new System.Drawing.Size(500, 500);
@@ -68,5 +77,6 @@
         #endregion
 
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.Panel panel1;
     }
 }
