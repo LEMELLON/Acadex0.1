@@ -19,10 +19,7 @@ namespace Acadex0._1
             InitializeComponent();
         }
 
-        private void Return_Button_Click(object sender, EventArgs e)
-        {
-            SwitchToStudentList?.Invoke();
-        }
+
 
         public void updateInfo() {
             this.StudentName.Text = student.name;
@@ -30,18 +27,40 @@ namespace Acadex0._1
             this.StudentID.Text = student.ID;
             this.StudentSubject.Text = student.subject;
 
+            updateGrades();
         }
 
+
+        public event Action SwitchToStudentList;
 
         private void clearGradeAdding() {
             Activity_Name.Text = "";
             Activity_Grade.Text = "";
         }
-        public event Action SwitchToStudentList;
-
-        private void button1_Click(object sender, EventArgs e)
+        private void Return_Button_Click(object sender, EventArgs e)
         {
+            SwitchToStudentList?.Invoke();
             clearGradeAdding();
+        }
+
+        private void updateGrades() {
+            Grades.Columns.Clear();
+            Grades.Rows.Clear();
+
+            Grades.Columns.Add("colActivity", "Activity");
+            Grades.Columns.Add("colGrade", "Grade");
+
+            foreach (var grade in student.StudentGrades)
+            {
+                Grades.Rows.Add(grade.Key, grade.Value);
+            }
+        }
+
+        private void AddGrade_Button(object sender, EventArgs e)
+        {
+            student.StudentGrades.Add(new KeyValuePair<string, string>(Activity_Name.Text, Activity_Grade.Text));
+            clearGradeAdding();
+            updateGrades();
         }
     }
 }

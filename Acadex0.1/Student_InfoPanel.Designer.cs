@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel1 = new System.Windows.Forms.Panel();
             this.StudentName = new System.Windows.Forms.Label();
@@ -41,32 +41,32 @@
             this.Add_StudentGrade = new System.Windows.Forms.Button();
             this.Activity_Name = new System.Windows.Forms.TextBox();
             this.Activity_Grade = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Grades = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Grades)).BeginInit();
             this.SuspendLayout();
             // 
             // chart1
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.chart1.Legends.Add(legend3);
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(24, 50);
             this.chart1.Name = "chart1";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.chart1.Series.Add(series3);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart1.Series.Add(series1);
             this.chart1.Size = new System.Drawing.Size(203, 123);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.dataGridView1);
+            this.panel1.Controls.Add(this.Grades);
             this.panel1.Location = new System.Drawing.Point(24, 306);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(449, 220);
@@ -120,13 +120,13 @@
             // 
             // Add_StudentGrade
             // 
-            this.Add_StudentGrade.Location = new System.Drawing.Point(204, 270);
+            this.Add_StudentGrade.Location = new System.Drawing.Point(199, 260);
             this.Add_StudentGrade.Name = "Add_StudentGrade";
             this.Add_StudentGrade.Size = new System.Drawing.Size(49, 30);
             this.Add_StudentGrade.TabIndex = 6;
             this.Add_StudentGrade.Text = "Add";
             this.Add_StudentGrade.UseVisualStyleBackColor = true;
-            this.Add_StudentGrade.Click += new System.EventHandler(this.button1_Click);
+            this.Add_StudentGrade.Click += new System.EventHandler(this.AddGrade_Button);
             // 
             // Activity_Name
             // 
@@ -142,17 +142,17 @@
             this.Activity_Grade.Size = new System.Drawing.Size(157, 22);
             this.Activity_Grade.TabIndex = 8;
             // 
-            // dataGridView1
+            // Grades
             // 
-            this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(449, 220);
-            this.dataGridView1.TabIndex = 0;
+            this.Grades.AllowUserToOrderColumns = true;
+            this.Grades.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Grades.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Grades.Location = new System.Drawing.Point(0, 0);
+            this.Grades.Name = "Grades";
+            this.Grades.RowHeadersWidth = 51;
+            this.Grades.RowTemplate.Height = 24;
+            this.Grades.Size = new System.Drawing.Size(449, 220);
+            this.Grades.TabIndex = 0;
             // 
             // Student_InfoPanel
             // 
@@ -173,7 +173,7 @@
             this.Size = new System.Drawing.Size(479, 500);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Grades)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -191,6 +191,6 @@
         private System.Windows.Forms.Button Add_StudentGrade;
         private System.Windows.Forms.TextBox Activity_Name;
         private System.Windows.Forms.TextBox Activity_Grade;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView Grades;
     }
 }
