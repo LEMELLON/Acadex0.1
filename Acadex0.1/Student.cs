@@ -8,7 +8,7 @@ namespace Acadex0._1
 {
     public class Student
     {
-
+            public List<KeyValuePair<string, int>> StudentGrades { get; set; }
             public string ID;
             public string name;
             public string section;
@@ -19,6 +19,8 @@ namespace Acadex0._1
                 this.ID = ID;
                 this.section = section;
                 this.subject = subject;
+
+                StudentGrades = new List<KeyValuePair<string, int>>();
             }
         
     }

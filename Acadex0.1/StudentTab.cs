@@ -20,6 +20,7 @@ namespace Acadex0._1
         public string name;
         public string section;
         public string subject;
+        public int StudentListLoc;
         private void StudentTab_Load(object sender, EventArgs e)
         {
             StudentName.Text= name;
@@ -28,12 +29,12 @@ namespace Acadex0._1
             StudentSubject.Text= subject;
         }
 
-        private void StudentName_Click(object sender, EventArgs e)
-        {
-            lookToStudent?.Invoke();
-        }
+        public event Action<int> OpenStudentInfo;
 
-        public event Action lookToStudent;
+        private void Tab_Clicked(object sender, EventArgs e)
+        {
+            OpenStudentInfo?.Invoke(StudentListLoc);
+        }
     }
 
 }

@@ -42,7 +42,6 @@
             this.StudentName.Size = new System.Drawing.Size(44, 16);
             this.StudentName.TabIndex = 0;
             this.StudentName.Text = "Name";
-            this.StudentName.Click += new System.EventHandler(this.StudentName_Click);
             // 
             // StudentSection
             // 
@@ -82,6 +81,7 @@
             this.Name = "StudentTab";
             this.Size = new System.Drawing.Size(500, 50);
             this.Load += new System.EventHandler(this.StudentTab_Load);
+            this.Click += new System.EventHandler(this.Tab_Clicked);
             this.ResumeLayout(false);
             this.PerformLayout();
 

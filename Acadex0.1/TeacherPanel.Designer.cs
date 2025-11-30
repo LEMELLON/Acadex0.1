@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TeacherPanel));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.gradeStatistics1 = new Acadex0._1.GradeStatistics();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.Logo = new System.Windows.Forms.PictureBox();
@@ -39,8 +40,7 @@
             this.button4 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.studentLists1 = new Acadex0._1.StudentLists();
-            this.gradeStatistics1 = new Acadex0._1.GradeStatistics();
+            this.students_Panel1 = new Acadex0._1.Students_Panel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
@@ -51,12 +51,19 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.studentLists1);
+            this.panel1.Controls.Add(this.students_Panel1);
             this.panel1.Controls.Add(this.gradeStatistics1);
             this.panel1.Location = new System.Drawing.Point(145, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(550, 500);
             this.panel1.TabIndex = 0;
+            // 
+            // gradeStatistics1
+            // 
+            this.gradeStatistics1.Location = new System.Drawing.Point(0, 0);
+            this.gradeStatistics1.Name = "gradeStatistics1";
+            this.gradeStatistics1.Size = new System.Drawing.Size(541, 500);
+            this.gradeStatistics1.TabIndex = 1;
             // 
             // label1
             // 
@@ -158,19 +165,12 @@
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Click += new System.EventHandler(this.Stat_Click);
             // 
-            // studentLists1
+            // students_Panel1
             // 
-            this.studentLists1.Location = new System.Drawing.Point(5, 0);
-            this.studentLists1.Name = "studentLists1";
-            this.studentLists1.Size = new System.Drawing.Size(500, 500);
-            this.studentLists1.TabIndex = 0;
-            // 
-            // gradeStatistics1
-            // 
-            this.gradeStatistics1.Location = new System.Drawing.Point(24, 0);
-            this.gradeStatistics1.Name = "gradeStatistics1";
-            this.gradeStatistics1.Size = new System.Drawing.Size(541, 500);
-            this.gradeStatistics1.TabIndex = 1;
+            this.students_Panel1.Location = new System.Drawing.Point(5, 0);
+            this.students_Panel1.Name = "students_Panel1";
+            this.students_Panel1.Size = new System.Drawing.Size(500, 500);
+            this.students_Panel1.TabIndex = 2;
             // 
             // TeacherPanel
             // 
@@ -208,8 +208,8 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private StudentLists studentLists1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private GradeStatistics gradeStatistics1;
+        private Students_Panel students_Panel1;
     }
 }

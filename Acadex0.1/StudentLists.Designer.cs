@@ -31,7 +31,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.StudentListBar = new System.Windows.Forms.Panel();
             this.newStudent = new System.Windows.Forms.Button();
-            this.Sections_Button = new System.Windows.Forms.Button();
             this.studentTab1 = new Acadex0._1.StudentTab();
             this.StudentListBar.SuspendLayout();
             this.SuspendLayout();
@@ -65,15 +64,6 @@
             this.newStudent.UseVisualStyleBackColor = true;
             this.newStudent.Click += new System.EventHandler(this.newStudent_Click);
             // 
-            // Sections_Button
-            // 
-            this.Sections_Button.Location = new System.Drawing.Point(264, 10);
-            this.Sections_Button.Name = "Sections_Button";
-            this.Sections_Button.Size = new System.Drawing.Size(97, 35);
-            this.Sections_Button.TabIndex = 4;
-            this.Sections_Button.Text = "Sections";
-            this.Sections_Button.UseVisualStyleBackColor = true;
-            // 
             // studentTab1
             // 
             this.studentTab1.Location = new System.Drawing.Point(0, 25);
@@ -85,7 +75,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.Sections_Button);
             this.Controls.Add(this.newStudent);
             this.Controls.Add(this.StudentListBar);
             this.Name = "StudentLists";
@@ -102,6 +91,5 @@
         private StudentTab studentTab1;
         private System.Windows.Forms.Panel StudentListBar;
         private System.Windows.Forms.Button newStudent;
-        private System.Windows.Forms.Button Sections_Button;
     }
 }

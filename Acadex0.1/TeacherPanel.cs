@@ -37,7 +37,7 @@ namespace Acadex0._1
         private void switchPanel(UserControl thisPanel)
         {
 
-            studentLists1.Hide();
+            students_Panel1.Hide();
             gradeStatistics1.Hide();
 
             thisPanel.Show();
@@ -45,7 +45,7 @@ namespace Acadex0._1
         }
         private void StudentListButton_Click(object sender, EventArgs e)
         {
-            switchPanel(studentLists1);
+            switchPanel(students_Panel1);
         }
 
         private void Stat_Click(object sender, EventArgs e)
