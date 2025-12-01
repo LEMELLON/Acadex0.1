@@ -18,6 +18,7 @@ namespace Acadex0._1
             MakeRounded(panel1,30);
             MakeRounded(Logo, 50);
             this.Dock = DockStyle.Fill;
+            gradeStatistics1.loadStats(students_Panel1.MyStudents);
         }
         public static void MakeRounded(Control control, int radius)
         {
@@ -39,7 +40,7 @@ namespace Acadex0._1
 
             students_Panel1.Hide();
             gradeStatistics1.Hide();
-
+            
             thisPanel.Show();
             thisPanel.BringToFront();
         }
@@ -51,6 +52,7 @@ namespace Acadex0._1
         private void Stat_Click(object sender, EventArgs e)
         {
             switchPanel(gradeStatistics1);
+            gradeStatistics1.updateStats();
         }
     }
 }

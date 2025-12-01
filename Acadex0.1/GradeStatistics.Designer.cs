@@ -28,7 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.label1 = new System.Windows.Forms.Label();
+            this.Grades = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.BestStudent = new Acadex0._1.StudentTab();
+            this.WorstStudent = new Acadex0._1.StudentTab();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.BS_Grade = new System.Windows.Forms.Label();
+            this.WS_Grade = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.Grades)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -41,13 +52,86 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Stats";
             // 
-            // UserControl1
+            // Grades
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.Grades.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.Grades.Legends.Add(legend1);
+            this.Grades.Location = new System.Drawing.Point(12, 22);
+            this.Grades.Name = "Grades";
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.Grades.Series.Add(series1);
+            this.Grades.Size = new System.Drawing.Size(311, 232);
+            this.Grades.TabIndex = 2;
+            this.Grades.Text = "chart1";
+            // 
+            // BestStudent
+            // 
+            this.BestStudent.Location = new System.Drawing.Point(23, 311);
+            this.BestStudent.Name = "BestStudent";
+            this.BestStudent.Size = new System.Drawing.Size(500, 50);
+            this.BestStudent.TabIndex = 3;
+            // 
+            // WorstStudent
+            // 
+            this.WorstStudent.Location = new System.Drawing.Point(23, 405);
+            this.WorstStudent.Name = "WorstStudent";
+            this.WorstStudent.Size = new System.Drawing.Size(500, 50);
+            this.WorstStudent.TabIndex = 4;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(46, 276);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(108, 16);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Highest Average";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(46, 376);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(104, 16);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Lowest Average";
+            // 
+            // BS_Grade
+            // 
+            this.BS_Grade.AutoSize = true;
+            this.BS_Grade.Location = new System.Drawing.Point(169, 276);
+            this.BS_Grade.Name = "BS_Grade";
+            this.BS_Grade.Size = new System.Drawing.Size(0, 16);
+            this.BS_Grade.TabIndex = 7;
+            // 
+            // WS_Grade
+            // 
+            this.WS_Grade.AutoSize = true;
+            this.WS_Grade.Location = new System.Drawing.Point(169, 376);
+            this.WS_Grade.Name = "WS_Grade";
+            this.WS_Grade.Size = new System.Drawing.Size(0, 16);
+            this.WS_Grade.TabIndex = 8;
+            // 
+            // GradeStatistics
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.WS_Grade);
+            this.Controls.Add(this.BS_Grade);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.WorstStudent);
+            this.Controls.Add(this.BestStudent);
+            this.Controls.Add(this.Grades);
             this.Controls.Add(this.label1);
-            this.Name = "UserControl1";
+            this.Name = "GradeStatistics";
             this.Size = new System.Drawing.Size(541, 493);
+            ((System.ComponentModel.ISupportInitialize)(this.Grades)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -56,5 +140,12 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart Grades;
+        private StudentTab BestStudent;
+        private StudentTab WorstStudent;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label BS_Grade;
+        private System.Windows.Forms.Label WS_Grade;
     }
 }

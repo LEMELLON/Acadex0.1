@@ -23,12 +23,12 @@ namespace Acadex0._1
         public static void AddStudent(Student student)
         {
             Students.Add(student);
-
         }
         public StudentLists()
         {   
             InitializeComponent();
             inputStudent.SubmitClicked += InputStudent_SubmitClicked;
+            MyStudents = Students;
 
         }
 

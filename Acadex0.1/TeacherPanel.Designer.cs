@@ -30,16 +30,14 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TeacherPanel));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.gradeStatistics1 = new Acadex0._1.GradeStatistics();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.Logo = new System.Windows.Forms.PictureBox();
             this.StudentListButton = new System.Windows.Forms.Button();
             this.Stat = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.gradeStatistics1 = new Acadex0._1.GradeStatistics();
             this.students_Panel1 = new Acadex0._1.Students_Panel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -51,19 +49,12 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.students_Panel1);
             this.panel1.Controls.Add(this.gradeStatistics1);
+            this.panel1.Controls.Add(this.students_Panel1);
             this.panel1.Location = new System.Drawing.Point(145, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(550, 500);
             this.panel1.TabIndex = 0;
-            // 
-            // gradeStatistics1
-            // 
-            this.gradeStatistics1.Location = new System.Drawing.Point(0, 0);
-            this.gradeStatistics1.Name = "gradeStatistics1";
-            this.gradeStatistics1.Size = new System.Drawing.Size(541, 500);
-            this.gradeStatistics1.TabIndex = 1;
             // 
             // label1
             // 
@@ -123,24 +114,6 @@
             this.Stat.UseVisualStyleBackColor = false;
             this.Stat.Click += new System.EventHandler(this.Stat_Click);
             // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(33, 283);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 6;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(33, 441);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 7;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
@@ -165,6 +138,13 @@
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Click += new System.EventHandler(this.Stat_Click);
             // 
+            // gradeStatistics1
+            // 
+            this.gradeStatistics1.Location = new System.Drawing.Point(0, 0);
+            this.gradeStatistics1.Name = "gradeStatistics1";
+            this.gradeStatistics1.Size = new System.Drawing.Size(541, 500);
+            this.gradeStatistics1.TabIndex = 1;
+            // 
             // students_Panel1
             // 
             this.students_Panel1.Location = new System.Drawing.Point(5, 0);
@@ -179,8 +159,6 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(244)))), ((int)(((byte)(237)))));
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
             this.Controls.Add(this.Stat);
             this.Controls.Add(this.StudentListButton);
             this.Controls.Add(this.panel2);
@@ -205,8 +183,6 @@
         private System.Windows.Forms.PictureBox Logo;
         private System.Windows.Forms.Button StudentListButton;
         private System.Windows.Forms.Button Stat;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private GradeStatistics gradeStatistics1;

@@ -23,10 +23,13 @@ namespace Acadex0._1
         public int StudentListLoc;
         private void StudentTab_Load(object sender, EventArgs e)
         {
-            StudentName.Text= name;
-            StudentID.Text= ID;
-            StudentSection.Text= section;
-            StudentSubject.Text= subject;
+            updateTab();
+        }
+        public void updateTab() {
+            StudentName.Text = name;
+            StudentID.Text = ID;
+            StudentSection.Text = section;
+            StudentSubject.Text = subject;
         }
 
         public event Action<int> OpenStudentInfo;

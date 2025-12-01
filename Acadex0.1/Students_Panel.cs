@@ -12,11 +12,13 @@ namespace Acadex0._1
 {
     public partial class Students_Panel : UserControl
     {
+        public List<Student> MyStudents;
         public Students_Panel()
         {
             InitializeComponent();
             studentLists1.OpenStudentInfo += openInfo;
             student_InfoPanel1.SwitchToStudentList += openList;
+            MyStudents = studentLists1.MyStudents;
         }
         private void openInfo(int index)
         {
