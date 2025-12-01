@@ -10,6 +10,7 @@ namespace Acadex0._1
     {
             public List<KeyValuePair<string, string>> StudentGrades { get; set; }
             public string ID;
+            private float average=0;
             public string name;
             public string section;
             public string subject;
@@ -21,7 +22,25 @@ namespace Acadex0._1
                 this.subject = subject;
 
                 StudentGrades = new List<KeyValuePair<string, string>>();
+                
             }
-        
+
+            public float GetAverage()
+            {
+                if (StudentGrades.Count == 0)
+                    return 0f;
+
+                float sum = 0;
+
+                foreach (var grade in StudentGrades)
+                {
+                    if (int.TryParse(grade.Value, out int value))
+                        sum += value;
+                    else
+                        return 0f; // non-numeric grade found
+                }
+
+                return (float)Math.Round(sum / StudentGrades.Count, 2);
+        }
     }
 }

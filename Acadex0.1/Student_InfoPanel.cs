@@ -26,7 +26,7 @@ namespace Acadex0._1
             this.StudentSection.Text = student.section;
             this.StudentID.Text = student.ID;
             this.StudentSubject.Text = student.subject;
-
+            InvalidInputText.Text = "";
             updateGrades();
         }
 
@@ -46,9 +46,11 @@ namespace Acadex0._1
         private void updateGrades() {
             Grades.Columns.Clear();
             Grades.Rows.Clear();
-
-            Grades.Columns.Add("colActivity", "Activity");
-            Grades.Columns.Add("colGrade", "Grade");
+            string Temp = "";
+            Temp+= student.GetAverage();
+            student_Grade.Text = Temp;
+            Grades.Columns.Add("Activity", "Activity");
+            Grades.Columns.Add("Grade", "Grade");
 
             foreach (var grade in student.StudentGrades)
             {
@@ -56,11 +58,32 @@ namespace Acadex0._1
             }
         }
 
+
         private void AddGrade_Button(object sender, EventArgs e)
+        {   
+
+            if (int.TryParse(Activity_Grade.Text, out int value))
+            {
+                if (Convert.ToDouble(Activity_Grade.Text) > 100 || Convert.ToDouble(Activity_Grade.Text) < 1)
+                {
+                    InvalidInputText.Text = "*Enter A Valid Average Grade";
+                }
+                else
+                {
+                    student.StudentGrades.Add(new KeyValuePair<string, string>(Activity_Name.Text, Activity_Grade.Text));
+                    clearGradeAdding();
+                    updateGrades();
+                }
+
+            }
+            else {
+                InvalidInputText.Text= "*Enter A Valid Grade";
+            }
+        }
+
+        private void Activity_Grade_TextChanged(object sender, EventArgs e)
         {
-            student.StudentGrades.Add(new KeyValuePair<string, string>(Activity_Name.Text, Activity_Grade.Text));
-            clearGradeAdding();
-            updateGrades();
+            InvalidInputText.Text = "";
         }
     }
 }

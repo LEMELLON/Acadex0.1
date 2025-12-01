@@ -28,11 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.Grades = new System.Windows.Forms.DataGridView();
             this.StudentName = new System.Windows.Forms.Label();
             this.StudentSection = new System.Windows.Forms.Label();
             this.StudentSubject = new System.Windows.Forms.Label();
@@ -41,41 +38,40 @@
             this.Add_StudentGrade = new System.Windows.Forms.Button();
             this.Activity_Name = new System.Windows.Forms.TextBox();
             this.Activity_Grade = new System.Windows.Forms.TextBox();
-            this.Grades = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            this.student_Grade = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.InvalidInputText = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Grades)).BeginInit();
             this.SuspendLayout();
             // 
-            // chart1
-            // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(24, 50);
-            this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(203, 123);
-            this.chart1.TabIndex = 0;
-            this.chart1.Text = "chart1";
-            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.Grades);
-            this.panel1.Location = new System.Drawing.Point(24, 306);
+            this.panel1.Location = new System.Drawing.Point(14, 224);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(449, 220);
             this.panel1.TabIndex = 1;
             // 
+            // Grades
+            // 
+            this.Grades.AllowUserToAddRows = false;
+            this.Grades.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Grades.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Grades.Location = new System.Drawing.Point(0, 0);
+            this.Grades.Name = "Grades";
+            this.Grades.ReadOnly = true;
+            this.Grades.RowHeadersWidth = 51;
+            this.Grades.RowTemplate.Height = 24;
+            this.Grades.Size = new System.Drawing.Size(449, 220);
+            this.Grades.TabIndex = 0;
+            // 
             // StudentName
             // 
             this.StudentName.AutoSize = true;
-            this.StudentName.Location = new System.Drawing.Point(254, 50);
+            this.StudentName.Location = new System.Drawing.Point(32, 66);
             this.StudentName.Name = "StudentName";
             this.StudentName.Size = new System.Drawing.Size(44, 16);
             this.StudentName.TabIndex = 1;
@@ -84,7 +80,7 @@
             // StudentSection
             // 
             this.StudentSection.AutoSize = true;
-            this.StudentSection.Location = new System.Drawing.Point(254, 84);
+            this.StudentSection.Location = new System.Drawing.Point(32, 106);
             this.StudentSection.Name = "StudentSection";
             this.StudentSection.Size = new System.Drawing.Size(52, 16);
             this.StudentSection.TabIndex = 2;
@@ -93,7 +89,7 @@
             // StudentSubject
             // 
             this.StudentSubject.AutoSize = true;
-            this.StudentSubject.Location = new System.Drawing.Point(254, 119);
+            this.StudentSubject.Location = new System.Drawing.Point(32, 143);
             this.StudentSubject.Name = "StudentSubject";
             this.StudentSubject.Size = new System.Drawing.Size(52, 16);
             this.StudentSubject.TabIndex = 3;
@@ -102,7 +98,7 @@
             // StudentID
             // 
             this.StudentID.AutoSize = true;
-            this.StudentID.Location = new System.Drawing.Point(254, 157);
+            this.StudentID.Location = new System.Drawing.Point(32, 173);
             this.StudentID.Name = "StudentID";
             this.StudentID.Size = new System.Drawing.Size(20, 16);
             this.StudentID.TabIndex = 4;
@@ -120,7 +116,7 @@
             // 
             // Add_StudentGrade
             // 
-            this.Add_StudentGrade.Location = new System.Drawing.Point(199, 260);
+            this.Add_StudentGrade.Location = new System.Drawing.Point(400, 173);
             this.Add_StudentGrade.Name = "Add_StudentGrade";
             this.Add_StudentGrade.Size = new System.Drawing.Size(49, 30);
             this.Add_StudentGrade.TabIndex = 6;
@@ -130,35 +126,78 @@
             // 
             // Activity_Name
             // 
-            this.Activity_Name.Location = new System.Drawing.Point(24, 242);
+            this.Activity_Name.Location = new System.Drawing.Point(223, 155);
             this.Activity_Name.Name = "Activity_Name";
             this.Activity_Name.Size = new System.Drawing.Size(158, 22);
             this.Activity_Name.TabIndex = 7;
             // 
             // Activity_Grade
             // 
-            this.Activity_Grade.Location = new System.Drawing.Point(24, 280);
+            this.Activity_Grade.Location = new System.Drawing.Point(223, 196);
             this.Activity_Grade.Name = "Activity_Grade";
             this.Activity_Grade.Size = new System.Drawing.Size(157, 22);
             this.Activity_Grade.TabIndex = 8;
+            this.Activity_Grade.TextChanged += new System.EventHandler(this.Activity_Grade_TextChanged);
             // 
-            // Grades
+            // student_Grade
             // 
-            this.Grades.AllowUserToOrderColumns = true;
-            this.Grades.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Grades.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Grades.Location = new System.Drawing.Point(0, 0);
-            this.Grades.Name = "Grades";
-            this.Grades.RowHeadersWidth = 51;
-            this.Grades.RowTemplate.Height = 24;
-            this.Grades.Size = new System.Drawing.Size(449, 220);
-            this.Grades.TabIndex = 0;
+            this.student_Grade.AutoSize = true;
+            this.student_Grade.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.student_Grade.Location = new System.Drawing.Point(311, 66);
+            this.student_Grade.Name = "student_Grade";
+            this.student_Grade.Size = new System.Drawing.Size(55, 39);
+            this.student_Grade.TabIndex = 9;
+            this.student_Grade.Text = "90";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(216, 66);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(89, 39);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "AVG";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(173, 199);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(45, 16);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "Grade";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(169, 161);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(49, 16);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "Activity";
+            // 
+            // InvalidInputText
+            // 
+            this.InvalidInputText.AutoSize = true;
+            this.InvalidInputText.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InvalidInputText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.InvalidInputText.Location = new System.Drawing.Point(184, 183);
+            this.InvalidInputText.Name = "InvalidInputText";
+            this.InvalidInputText.Size = new System.Drawing.Size(94, 16);
+            this.InvalidInputText.TabIndex = 13;
+            this.InvalidInputText.Text = "Activity_Grade";
             // 
             // Student_InfoPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
+            this.Controls.Add(this.InvalidInputText);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.student_Grade);
             this.Controls.Add(this.Activity_Grade);
             this.Controls.Add(this.Activity_Name);
             this.Controls.Add(this.Add_StudentGrade);
@@ -168,10 +207,8 @@
             this.Controls.Add(this.StudentSection);
             this.Controls.Add(this.StudentName);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.chart1);
             this.Name = "Student_InfoPanel";
             this.Size = new System.Drawing.Size(479, 500);
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Grades)).EndInit();
             this.ResumeLayout(false);
@@ -180,8 +217,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label StudentName;
         private System.Windows.Forms.Label StudentSection;
@@ -192,5 +227,10 @@
         private System.Windows.Forms.TextBox Activity_Name;
         private System.Windows.Forms.TextBox Activity_Grade;
         private System.Windows.Forms.DataGridView Grades;
+        private System.Windows.Forms.Label student_Grade;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label InvalidInputText;
     }
 }
