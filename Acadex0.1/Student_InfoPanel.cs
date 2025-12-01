@@ -27,6 +27,7 @@ namespace Acadex0._1
             this.StudentID.Text = student.ID;
             this.StudentSubject.Text = student.subject;
             InvalidInputText.Text = "";
+            ActivityName.Text = "";
             updateGrades();
         }
 
@@ -60,11 +61,11 @@ namespace Acadex0._1
 
 
         private void AddGrade_Button(object sender, EventArgs e)
-        {   
-
+        {
+            if (Activity_Name.Text == "") ActivityName.Text = "*Enter A Valid Name";
             if (int.TryParse(Activity_Grade.Text, out int value))
             {
-                if (Convert.ToDouble(Activity_Grade.Text) > 100 || Convert.ToDouble(Activity_Grade.Text) < 1)
+                if (Convert.ToDouble(Activity_Grade.Text) > 100 || Convert.ToDouble(Activity_Grade.Text) < 1 )
                 {
                     InvalidInputText.Text = "*Enter A Valid Average Grade";
                 }
@@ -84,6 +85,11 @@ namespace Acadex0._1
         private void Activity_Grade_TextChanged(object sender, EventArgs e)
         {
             InvalidInputText.Text = "";
+        }
+
+        private void Activity_Name_TextChanged(object sender, EventArgs e)
+        {
+            ActivityName.Text = "";
         }
     }
 }

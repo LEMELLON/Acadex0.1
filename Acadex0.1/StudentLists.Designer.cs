@@ -28,31 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
             this.StudentListBar = new System.Windows.Forms.Panel();
-            this.newStudent = new System.Windows.Forms.Button();
             this.studentTab1 = new Acadex0._1.StudentTab();
+            this.newStudent = new System.Windows.Forms.Button();
             this.StudentListBar.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(226, 204);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(78, 16);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Student  List";
             // 
             // StudentListBar
             // 
             this.StudentListBar.AutoScroll = true;
             this.StudentListBar.Controls.Add(this.studentTab1);
-            this.StudentListBar.Controls.Add(this.label1);
             this.StudentListBar.Location = new System.Drawing.Point(0, 51);
             this.StudentListBar.Name = "StudentListBar";
             this.StudentListBar.Size = new System.Drawing.Size(499, 448);
             this.StudentListBar.TabIndex = 2;
+            // 
+            // studentTab1
+            // 
+            this.studentTab1.Location = new System.Drawing.Point(0, 25);
+            this.studentTab1.Name = "studentTab1";
+            this.studentTab1.Size = new System.Drawing.Size(500, 50);
+            this.studentTab1.TabIndex = 1;
             // 
             // newStudent
             // 
@@ -64,13 +60,6 @@
             this.newStudent.UseVisualStyleBackColor = true;
             this.newStudent.Click += new System.EventHandler(this.newStudent_Click);
             // 
-            // studentTab1
-            // 
-            this.studentTab1.Location = new System.Drawing.Point(0, 25);
-            this.studentTab1.Name = "studentTab1";
-            this.studentTab1.Size = new System.Drawing.Size(500, 50);
-            this.studentTab1.TabIndex = 1;
-            // 
             // StudentLists
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -80,14 +69,11 @@
             this.Name = "StudentLists";
             this.Size = new System.Drawing.Size(500, 500);
             this.StudentListBar.ResumeLayout(false);
-            this.StudentListBar.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
         private StudentTab studentTab1;
         private System.Windows.Forms.Panel StudentListBar;
         private System.Windows.Forms.Button newStudent;

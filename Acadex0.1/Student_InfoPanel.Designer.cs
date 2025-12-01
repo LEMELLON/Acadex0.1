@@ -43,6 +43,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.InvalidInputText = new System.Windows.Forms.Label();
+            this.ActivityName = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Grades)).BeginInit();
             this.SuspendLayout();
@@ -130,6 +131,7 @@
             this.Activity_Name.Name = "Activity_Name";
             this.Activity_Name.Size = new System.Drawing.Size(158, 22);
             this.Activity_Name.TabIndex = 7;
+            this.Activity_Name.TextChanged += new System.EventHandler(this.Activity_Name_TextChanged);
             // 
             // Activity_Grade
             // 
@@ -188,11 +190,23 @@
             this.InvalidInputText.TabIndex = 13;
             this.InvalidInputText.Text = "Activity_Grade";
             // 
+            // ActivityName
+            // 
+            this.ActivityName.AutoSize = true;
+            this.ActivityName.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ActivityName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.ActivityName.Location = new System.Drawing.Point(184, 136);
+            this.ActivityName.Name = "ActivityName";
+            this.ActivityName.Size = new System.Drawing.Size(94, 16);
+            this.ActivityName.TabIndex = 14;
+            this.ActivityName.Text = "Activity_Grade";
+            // 
             // Student_InfoPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
+            this.Controls.Add(this.ActivityName);
             this.Controls.Add(this.InvalidInputText);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
@@ -232,5 +246,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label InvalidInputText;
+        private System.Windows.Forms.Label ActivityName;
     }
 }

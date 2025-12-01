@@ -33,7 +33,5 @@ namespace Acadex0._1
             studentLists1.Show();
             student_InfoPanel1.Hide();
         }
-
-        
     }
 }
