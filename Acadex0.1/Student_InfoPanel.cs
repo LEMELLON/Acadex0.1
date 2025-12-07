@@ -63,9 +63,9 @@ namespace Acadex0._1
         private void AddGrade_Button(object sender, EventArgs e)
         {
             if (Activity_Name.Text == "") ActivityName.Text = "*Enter A Valid Name";
-            if (int.TryParse(Activity_Grade.Text, out int value))
+            else if (int.TryParse(Activity_Grade.Text, out int value))
             {
-                if (Convert.ToDouble(Activity_Grade.Text) > 100 || Convert.ToDouble(Activity_Grade.Text) < 1 )
+                if (Convert.ToDouble(Activity_Grade.Text) > 100 || Convert.ToDouble(Activity_Grade.Text) < 1)
                 {
                     InvalidInputText.Text = "*Enter A Valid Average Grade";
                 }
@@ -77,8 +77,9 @@ namespace Acadex0._1
                 }
 
             }
-            else {
-                InvalidInputText.Text= "*Enter A Valid Grade";
+            else
+            {
+                InvalidInputText.Text = "*Enter A Valid Grade";
             }
         }
 

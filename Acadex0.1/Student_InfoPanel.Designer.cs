@@ -164,11 +164,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(173, 199);
+            this.label1.Location = new System.Drawing.Point(139, 201);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(45, 16);
+            this.label1.Size = new System.Drawing.Size(80, 16);
             this.label1.TabIndex = 11;
-            this.label1.Text = "Grade";
+            this.label1.Text = "Grade (Avg)";
             // 
             // label3
             // 

@@ -15,9 +15,43 @@ namespace Acadex0._1
     public partial class StudentLists : UserControl
     {
         InputStudent inputStudent = new InputStudent();
+        public static bool isInStudents(Student temp) {
+            return Students.Any(s =>
+            s.ID == temp.ID 
+            );
+        }
 
-        
-         
+        public List<(string abbreviation, string name)> MySubjects = new List<(string abbreviation, string name)>();
+
+        private void UpdateSubjects()
+        {
+            // Clear list so unused subjects disappear automatically
+            MySubjects.Clear();
+
+            // Loop through all students
+            foreach (var stu in Students)
+            {
+                // Find the subject definition in the master list
+                var subjectDef = DataBase1.Subjects
+                    .FirstOrDefault(s => s.abbreviation == stu.subject);
+
+                // Add to MySubjects only if it exists and is not already added
+                if (subjectDef != default && !MySubjects.Any(x => x.abbreviation == subjectDef.abbreviation))
+                {
+                    MySubjects.Add(subjectDef);
+                }
+            }
+
+            DebugShowSubjects();
+        }
+        private void DebugShowSubjects()
+        {
+            string result = string.Join("\n",
+                MySubjects.Select(s => $"{s.abbreviation} - {s.name}"));
+
+            MessageBox.Show(result == "" ? "No subjects found" : result);
+        }
+
         public static List<Student> Students = new List<Student>();
         public  List<Student> MyStudents ;
         public static void AddStudent(Student student)
@@ -28,6 +62,7 @@ namespace Acadex0._1
         {   
             InitializeComponent();
             inputStudent.SubmitClicked += InputStudent_SubmitClicked;
+            
             MyStudents = Students;
 
         }
@@ -35,8 +70,17 @@ namespace Acadex0._1
         private void newStudent_Click(object sender, EventArgs e)
         {
             inputStudent.Show();
+            removeMode = false;
+            foreach (Control c in StudentListBar.Controls)
+            {
+                if (c is StudentTab tab)
+                {
+                    tab.removeModeOff();
+                }
+            }
         }
         public void updateList() {
+            UpdateSubjects();
             MyStudents = Students;
             StudentListBar.Controls.Clear();
             int index = 0;
@@ -51,6 +95,7 @@ namespace Acadex0._1
                 thisTab.Dock = DockStyle.Top;
 
                 thisTab.OpenStudentInfo += OnStudentTabClicked;
+                thisTab.removeStudentInfo += OnStudentTabRemoved;
 
                 thisTab.StudentListLoc = index;  
                 index++;
@@ -62,11 +107,56 @@ namespace Acadex0._1
         public void OnStudentTabClicked(int index) {
             OpenStudentInfo?.Invoke(index);
         }
+        public void OnStudentTabRemoved(int index)
+        {
+            if (index >= 0 && index < Students.Count)
+            {
+                Students.RemoveAt(index);     // remove student
+                updateList();                 // refresh UI
+                foreach (Control c in StudentListBar.Controls)
+                {
+                    if (c is StudentTab tab)
+                    {
+                        if (removeMode) tab.removeModeOn();
+                        else tab.removeModeOff();
+                    }
+                }
+            }
+        }
+
+
         public event Action <int>OpenStudentInfo;
         private void InputStudent_SubmitClicked()
         {
             updateList();
         }
+        private bool removeMode = false; 
+        private void removeStudent_Click(object sender, EventArgs e)
+        {
+            if (!removeMode)
+            {
+                foreach (Control c in StudentListBar.Controls)
+                {
+                    if (c is StudentTab tab)
+                    {
+                        tab.removeModeOn();
+                    }
+                }
+                removeMode = true;
+            }
+            else
+            {
+                foreach (Control c in StudentListBar.Controls)
+                {
+                    if (c is StudentTab tab)
+                    {
+                        tab.removeModeOff();
+                    }
+                }
+                removeMode = false;
+            }
+        }
+
     }
 
 }

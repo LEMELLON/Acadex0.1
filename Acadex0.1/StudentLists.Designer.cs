@@ -29,8 +29,9 @@
         private void InitializeComponent()
         {
             this.StudentListBar = new System.Windows.Forms.Panel();
-            this.studentTab1 = new Acadex0._1.StudentTab();
             this.newStudent = new System.Windows.Forms.Button();
+            this.removeStudent = new System.Windows.Forms.Button();
+            this.studentTab1 = new Acadex0._1.StudentTab();
             this.StudentListBar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -43,13 +44,6 @@
             this.StudentListBar.Size = new System.Drawing.Size(499, 448);
             this.StudentListBar.TabIndex = 2;
             // 
-            // studentTab1
-            // 
-            this.studentTab1.Location = new System.Drawing.Point(0, 25);
-            this.studentTab1.Name = "studentTab1";
-            this.studentTab1.Size = new System.Drawing.Size(500, 50);
-            this.studentTab1.TabIndex = 1;
-            // 
             // newStudent
             // 
             this.newStudent.Location = new System.Drawing.Point(367, 10);
@@ -60,10 +54,28 @@
             this.newStudent.UseVisualStyleBackColor = true;
             this.newStudent.Click += new System.EventHandler(this.newStudent_Click);
             // 
+            // removeStudent
+            // 
+            this.removeStudent.Location = new System.Drawing.Point(213, 10);
+            this.removeStudent.Name = "removeStudent";
+            this.removeStudent.Size = new System.Drawing.Size(148, 35);
+            this.removeStudent.TabIndex = 4;
+            this.removeStudent.Text = "Remove Student";
+            this.removeStudent.UseVisualStyleBackColor = true;
+            this.removeStudent.Click += new System.EventHandler(this.removeStudent_Click);
+            // 
+            // studentTab1
+            // 
+            this.studentTab1.Location = new System.Drawing.Point(0, 25);
+            this.studentTab1.Name = "studentTab1";
+            this.studentTab1.Size = new System.Drawing.Size(500, 50);
+            this.studentTab1.TabIndex = 1;
+            // 
             // StudentLists
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.removeStudent);
             this.Controls.Add(this.newStudent);
             this.Controls.Add(this.StudentListBar);
             this.Name = "StudentLists";
@@ -77,5 +89,6 @@
         private StudentTab studentTab1;
         private System.Windows.Forms.Panel StudentListBar;
         private System.Windows.Forms.Button newStudent;
+        private System.Windows.Forms.Button removeStudent;
     }
 }

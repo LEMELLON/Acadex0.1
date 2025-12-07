@@ -18,7 +18,7 @@ namespace Acadex0._1
             MakeRounded(panel1,30);
             MakeRounded(Logo, 50);
             this.Dock = DockStyle.Fill;
-            gradeStatistics1.loadStats(students_Panel1.MyStudents);
+            gradeStatistics1.loadStats(students_Panel1.MyStudents, students_Panel1.MySubjects);
         }
         public static void MakeRounded(Control control, int radius)
         {

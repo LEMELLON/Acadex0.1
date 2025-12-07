@@ -10,7 +10,7 @@ namespace Acadex0._1
     {
         public static List<(string abbreviation, string name)> Subjects = new List<(string abbreviation, string name)>()
         {
-            ("DSA ", "Data Structures And Algorithm"),
+            ("DSA", "Data Structures And Algorithm"),
             ("ITC", "Introduction To Computing"),
             ("HCI", "Human - Computer Interaction"),
             ("OOP", "Object Oriented Programming"),

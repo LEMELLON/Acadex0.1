@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.label1 = new System.Windows.Forms.Label();
             this.Grades = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.BestStudent = new Acadex0._1.StudentTab();
@@ -39,6 +39,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.BS_Grade = new System.Windows.Forms.Label();
             this.WS_Grade = new System.Windows.Forms.Label();
+            this.SubjectFilter = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.Grades)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,17 +55,17 @@
             // 
             // Grades
             // 
-            chartArea1.Name = "ChartArea1";
-            this.Grades.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.Grades.Legends.Add(legend1);
+            chartArea3.Name = "ChartArea1";
+            this.Grades.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.Grades.Legends.Add(legend3);
             this.Grades.Location = new System.Drawing.Point(12, 22);
             this.Grades.Name = "Grades";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.Grades.Series.Add(series1);
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.Grades.Series.Add(series3);
             this.Grades.Size = new System.Drawing.Size(311, 232);
             this.Grades.TabIndex = 2;
             this.Grades.Text = "chart1";
@@ -117,10 +118,19 @@
             this.WS_Grade.Size = new System.Drawing.Size(0, 16);
             this.WS_Grade.TabIndex = 8;
             // 
+            // SubjectFilter
+            // 
+            this.SubjectFilter.FormattingEnabled = true;
+            this.SubjectFilter.Location = new System.Drawing.Point(356, 235);
+            this.SubjectFilter.Name = "SubjectFilter";
+            this.SubjectFilter.Size = new System.Drawing.Size(139, 24);
+            this.SubjectFilter.TabIndex = 9;
+            // 
             // GradeStatistics
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.SubjectFilter);
             this.Controls.Add(this.WS_Grade);
             this.Controls.Add(this.BS_Grade);
             this.Controls.Add(this.label3);
@@ -130,7 +140,7 @@
             this.Controls.Add(this.Grades);
             this.Controls.Add(this.label1);
             this.Name = "GradeStatistics";
-            this.Size = new System.Drawing.Size(541, 493);
+            this.Size = new System.Drawing.Size(533, 493);
             ((System.ComponentModel.ISupportInitialize)(this.Grades)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -147,5 +157,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label BS_Grade;
         private System.Windows.Forms.Label WS_Grade;
+        private System.Windows.Forms.ComboBox SubjectFilter;
     }
 }

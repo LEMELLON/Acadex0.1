@@ -42,10 +42,17 @@ namespace Acadex0._1
             {
                 // Get selected index directly
                 student = DataBase1.Students[comboBox1.SelectedIndex];
+                if (StudentLists.isInStudents(student))
+                {
 
-                StudentLists.Students.Add(student);
-                this.Hide();
-                SubmitClicked?.Invoke();
+                    MessageBox.Show("Student Already in the Dashboard");
+                }
+                else
+                {
+                    StudentLists.Students.Add(student);
+                    this.Hide();
+                    SubmitClicked?.Invoke();
+                }
             }
             else
             {

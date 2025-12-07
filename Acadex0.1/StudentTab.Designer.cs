@@ -32,6 +32,7 @@
             this.StudentSection = new System.Windows.Forms.Label();
             this.StudentSubject = new System.Windows.Forms.Label();
             this.StudentID = new System.Windows.Forms.Label();
+            this.remove = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // StudentName
@@ -46,7 +47,7 @@
             // StudentSection
             // 
             this.StudentSection.AutoSize = true;
-            this.StudentSection.Location = new System.Drawing.Point(132, 17);
+            this.StudentSection.Location = new System.Drawing.Point(158, 17);
             this.StudentSection.Name = "StudentSection";
             this.StudentSection.Size = new System.Drawing.Size(52, 16);
             this.StudentSection.TabIndex = 1;
@@ -55,7 +56,7 @@
             // StudentSubject
             // 
             this.StudentSubject.AutoSize = true;
-            this.StudentSubject.Location = new System.Drawing.Point(276, 17);
+            this.StudentSubject.Location = new System.Drawing.Point(272, 16);
             this.StudentSubject.Name = "StudentSubject";
             this.StudentSubject.Size = new System.Drawing.Size(52, 16);
             this.StudentSubject.TabIndex = 2;
@@ -64,16 +65,27 @@
             // StudentID
             // 
             this.StudentID.AutoSize = true;
-            this.StudentID.Location = new System.Drawing.Point(415, 17);
+            this.StudentID.Location = new System.Drawing.Point(375, 17);
             this.StudentID.Name = "StudentID";
             this.StudentID.Size = new System.Drawing.Size(20, 16);
             this.StudentID.TabIndex = 3;
             this.StudentID.Text = "ID";
             // 
+            // remove
+            // 
+            this.remove.Location = new System.Drawing.Point(452, 8);
+            this.remove.Name = "remove";
+            this.remove.Size = new System.Drawing.Size(35, 33);
+            this.remove.TabIndex = 4;
+            this.remove.Text = "x";
+            this.remove.UseVisualStyleBackColor = true;
+            this.remove.Click += new System.EventHandler(this.remove_Click);
+            // 
             // StudentTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.remove);
             this.Controls.Add(this.StudentID);
             this.Controls.Add(this.StudentSubject);
             this.Controls.Add(this.StudentSection);
@@ -93,5 +105,6 @@
         private System.Windows.Forms.Label StudentSection;
         private System.Windows.Forms.Label StudentSubject;
         private System.Windows.Forms.Label StudentID;
+        private System.Windows.Forms.Button remove;
     }
 }

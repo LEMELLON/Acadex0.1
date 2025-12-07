@@ -13,18 +13,37 @@ namespace Acadex0._1
 {
     public partial class GradeStatistics : UserControl
     {
-        private static List<Student> Students;
+        private  List<Student> Students;
+        private  List<(string abbreviation, string name)> MySubjects;
         public GradeStatistics()
         {
             InitializeComponent();
+
         }
         private int failing;
         private int passing;
         private int excelling;
-        public void loadStats(List<Student> temp) {
+        public void loadStats(List<Student> temp, List<(string abbreviation, string name)> temp2) {
             Students = temp;
+            MySubjects = temp2;
+        }
+        public void updateFilter()
+        {
+            if (MySubjects == null) return;
+
+            SubjectFilter.Items.Clear();
+            SubjectFilter.Items.Add("All Subjects");
+            MessageBox.Show("UPDIT!");
+
+            foreach (var s in MySubjects)
+            {
+                SubjectFilter.Items.Add($"{s.abbreviation} - {s.name}");
+            }
+
+            SubjectFilter.SelectedIndex = 0;
         }
         public void updateStats() {
+            updateFilter();
 
             if (Students == null) return;
 

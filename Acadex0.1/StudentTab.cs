@@ -22,10 +22,11 @@ namespace Acadex0._1
         public string subject;
         public int StudentListLoc;
 
-        public bool removeMode = true;
+        private bool removeMode = false;
         private void StudentTab_Load(object sender, EventArgs e)
         {
             updateTab();
+            removeModeOff();
         }
         public void updateTab() {
             StudentName.Text = name;
@@ -37,10 +38,26 @@ namespace Acadex0._1
         public event Action<int> OpenStudentInfo;
         public event Action<int> removeStudentInfo;
 
+        public void removeModeOn() {
+            remove.Show();
+            removeMode = true;
+        }
+
+        public void removeModeOff()
+        {
+            remove.Hide();
+            removeMode = true;
+        }
+
         private void Tab_Clicked(object sender, EventArgs e)
         {
             if (!removeMode) OpenStudentInfo?.Invoke(StudentListLoc);
-            else removeStudentInfo?.Invoke(StudentListLoc); 
+             
+        }
+
+        private void remove_Click(object sender, EventArgs e)
+        {
+            if (removeMode) removeStudentInfo?.Invoke(StudentListLoc);
         }
     }
 
