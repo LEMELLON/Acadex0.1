@@ -42,6 +42,7 @@ namespace Acadex0._1
                 }
             }
             UpdateSections();
+            updateFilter();
         }
 
 
@@ -62,15 +63,9 @@ namespace Acadex0._1
                 }
             }
 
-            // Optional: debug output
-            DebugShowSections();
         }
 
-        private void DebugShowSections()
-        {
-            string result = string.Join("\n", MySections);
-            MessageBox.Show(result == "" ? "No sections found" : result);
-        }
+
 
         public static List<Student> Students = new List<Student>();
         public  List<Student> MyStudents ;
@@ -100,7 +95,11 @@ namespace Acadex0._1
             }
         }
         public void updateList() {
+            
             UpdateSubjects();
+
+            
+
             MyStudents = Students;
             StudentListBar.Controls.Clear();
             int index = 0;
@@ -124,6 +123,8 @@ namespace Acadex0._1
 
                 StudentListBar.Controls.Add(thisTab);
             }
+            
+            filterList();
         }
 
         public void OnStudentTabClicked(int index) {
@@ -178,6 +179,107 @@ namespace Acadex0._1
                 removeMode = false;
             }
         }
+        private void filtter_Click(object sender, EventArgs e)
+        {
+            filterList();
+        }
+
+        private void filterList()
+        {
+            if (Students == null || Students.Count == 0) return;
+
+            // Start with all students
+            List<Student> filteredStudents = Students;
+
+            // --- Filter by Subject ---
+            if (subjectFillter.SelectedIndex > 0 && subjectFillter.SelectedItem.ToString() != "All Subjects")
+            {
+                string abbrev = subjectFillter.SelectedItem.ToString().Split('-')[0].Trim();
+                filteredStudents = filteredStudents.Where(s => s.subject.Trim() == abbrev).ToList();
+            }
+
+            // --- Filter by Section ---
+            if (sectionFilter.SelectedIndex > 0 && sectionFilter.SelectedItem.ToString() != "All Sections")
+            {
+                string section = sectionFilter.SelectedItem.ToString();
+                filteredStudents = filteredStudents.Where(s => s.section.Trim() == section).ToList();
+            }
+
+            // --- Update MyStudents ---
+            MyStudents = filteredStudents;
+
+            // --- Clear existing UI ---
+            StudentListBar.Controls.Clear();
+
+            if (filteredStudents.Count == 0)
+            {
+                // Show placeholder tab if no students match
+                StudentTab placeholder = new StudentTab
+                {
+                    name = "No Student Found",
+                    ID = "",
+                    section = "",
+                    subject = "",
+                    Dock = DockStyle.Top,
+                    StudentListLoc = -1 // invalid index
+                };
+                StudentListBar.Controls.Add(placeholder);
+                return;
+            }
+
+            // --- Populate filtered students ---
+            int index = 0;
+            foreach (Student student in filteredStudents)
+            {
+                StudentTab thisTab = new StudentTab
+                {
+                    name = student.name,
+                    ID = student.ID,
+                    section = student.section,
+                    subject = student.subject,
+                    Dock = DockStyle.Top,
+                    StudentListLoc = index
+                };
+
+                thisTab.OpenStudentInfo += OnStudentTabClicked;
+                thisTab.removeStudentInfo += OnStudentTabRemoved;
+
+                index++;
+                StudentListBar.Controls.Add(thisTab);
+            }
+        }
+        public void updateFilter()
+        {
+            // --- Subject Filter ---
+            if (MySubjects != null)
+            {
+                subjectFillter.Items.Clear();
+                subjectFillter.Items.Add("All Subjects");
+
+                foreach (var s in MySubjects)
+                {
+                    subjectFillter.Items.Add($"{s.abbreviation} - {s.name}");
+                }
+
+                subjectFillter.SelectedIndex = 0;
+            }
+
+            // --- Section Filter ---
+            if (MySections != null)
+            {
+                sectionFilter.Items.Clear();
+                sectionFilter.Items.Add("All Sections");
+
+                foreach (var sec in MySections)
+                {
+                    sectionFilter.Items.Add(sec);
+                }
+
+                sectionFilter.SelectedIndex = 0;
+            }
+        }
+
+
 
     }
 

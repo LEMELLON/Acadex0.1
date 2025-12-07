@@ -14,6 +14,7 @@ namespace Acadex0._1
     {
         public List<Student> MyStudents;
         public List<(string abbreviation, string name)> MySubjects;
+        public List<string> MySections = new List<string>();
         public Students_Panel()
         {
             InitializeComponent();
@@ -21,6 +22,7 @@ namespace Acadex0._1
             student_InfoPanel1.SwitchToStudentList += openList;
             MyStudents = studentLists1.MyStudents;
             MySubjects = studentLists1.MySubjects;
+            MySections = studentLists1.MySections;
         }
         private void openInfo(int index)
         {

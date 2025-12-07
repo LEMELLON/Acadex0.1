@@ -41,6 +41,7 @@
             this.WS_Grade = new System.Windows.Forms.Label();
             this.SubjectFilter = new System.Windows.Forms.ComboBox();
             this.filter = new System.Windows.Forms.Button();
+            this.SectionFilter = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.Grades)).BeginInit();
             this.SuspendLayout();
             // 
@@ -137,10 +138,19 @@
             this.filter.UseVisualStyleBackColor = true;
             this.filter.Click += new System.EventHandler(this.filter_Click);
             // 
+            // SectionFilter
+            // 
+            this.SectionFilter.FormattingEnabled = true;
+            this.SectionFilter.Location = new System.Drawing.Point(252, 190);
+            this.SectionFilter.Name = "SectionFilter";
+            this.SectionFilter.Size = new System.Drawing.Size(185, 24);
+            this.SectionFilter.TabIndex = 11;
+            // 
             // GradeStatistics
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.SectionFilter);
             this.Controls.Add(this.filter);
             this.Controls.Add(this.SubjectFilter);
             this.Controls.Add(this.WS_Grade);
@@ -171,5 +181,6 @@
         private System.Windows.Forms.Label WS_Grade;
         private System.Windows.Forms.ComboBox SubjectFilter;
         private System.Windows.Forms.Button filter;
+        private System.Windows.Forms.ComboBox SectionFilter;
     }
 }
