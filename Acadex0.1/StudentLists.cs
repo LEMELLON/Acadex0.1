@@ -16,8 +16,8 @@ namespace Acadex0._1
     {
         InputStudent inputStudent = new InputStudent();
 
-        public static List<string> SectionList = new List<string>();
-
+        
+         
         public static List<Student> Students = new List<Student>();
         public  List<Student> MyStudents ;
         public static void AddStudent(Student student)
@@ -70,3 +70,6 @@ namespace Acadex0._1
     }
 
 }
+
+
+

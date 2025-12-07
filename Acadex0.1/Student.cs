@@ -14,7 +14,7 @@ namespace Acadex0._1
             public string name;
             public string section;
             public string subject;
-            public Student(String name, string ID, String section, String subject)
+            public Student(String name, String ID, String section, String subject)
             {
                 this.name = name;
                 this.ID = ID;
