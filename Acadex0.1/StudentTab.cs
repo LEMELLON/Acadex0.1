@@ -21,6 +21,8 @@ namespace Acadex0._1
         public string section;
         public string subject;
         public int StudentListLoc;
+
+        public bool removeMode = true;
         private void StudentTab_Load(object sender, EventArgs e)
         {
             updateTab();
@@ -33,10 +35,12 @@ namespace Acadex0._1
         }
 
         public event Action<int> OpenStudentInfo;
+        public event Action<int> removeStudentInfo;
 
         private void Tab_Clicked(object sender, EventArgs e)
         {
-            OpenStudentInfo?.Invoke(StudentListLoc);
+            if (!removeMode) OpenStudentInfo?.Invoke(StudentListLoc);
+            else removeStudentInfo?.Invoke(StudentListLoc); 
         }
     }
 

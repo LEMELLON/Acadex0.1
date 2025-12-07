@@ -20,7 +20,7 @@ namespace Acadex0._1
         public static List<Student> Students = new List<Student>()
         {
             new Student("Danny B. Cantillon", "0000-0000", "BSIT 2-8", "DSA"),
-            new Student("Juan Dela Cruz", "2025-0001", "BSIT 1-1", "ITC"),
+            new Student("Juan Dela Cruz", "1025-0001", "BSIT 1-1", "ITC"),
             new Student("Maria Santos", "2025-0002", "BSIT 1-2", "OOP"),
             new Student("Jose Rizal", "2025-0003", "BSIT 1-3", "HCI"),
             new Student("Ana Lopez", "2025-0004", "BSIT 1-4", "NET"),

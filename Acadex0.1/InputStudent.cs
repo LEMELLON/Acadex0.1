@@ -17,34 +17,49 @@ namespace Acadex0._1
             InitializeComponent();
         }
 
+        private Student student ;
+
         private void InputStudent_Load(object sender, EventArgs e)
         {
-            
+            foreach (var s in DataBase1.Students)
+            {
+                // Display format: "ID - Name - Section - Subject"
+                comboBox1.Items.Add($"{s.ID} - {s.name} - {s.section} - {s.subject}");
+            }
+            comboBox1.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            comboBox1.AutoCompleteSource = AutoCompleteSource.ListItems;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            clearTextFeild();
+
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Student studendt = new Student(inputName.Text, inputID.Text, inputSection.Text, inputSubject.Text);
-            StudentLists.Students.Add(studendt);
-            this.Hide();
-            clearTextFeild();
-            SubmitClicked?.Invoke();
+            if (comboBox1.SelectedIndex >= 0)
+            {
+                // Get selected index directly
+                student = DataBase1.Students[comboBox1.SelectedIndex];
+
+                StudentLists.Students.Add(student);
+                this.Hide();
+                SubmitClicked?.Invoke();
+            }
+            else
+            {
+                MessageBox.Show("Please select a student from the list.");
+            }
         }
+
 
 
         public event Action SubmitClicked;
 
-        private void clearTextFeild() {
-            inputName.Text = "";
-            inputID.Text = "";
-            inputSection.Text = "";
-            inputSubject.Text = "";
+        private void comboBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
