@@ -33,7 +33,6 @@ namespace Acadex0._1
 
             SubjectFilter.Items.Clear();
             SubjectFilter.Items.Add("All Subjects");
-            MessageBox.Show("UPDIT!");
 
             foreach (var s in MySubjects)
             {
@@ -42,19 +41,38 @@ namespace Acadex0._1
 
             SubjectFilter.SelectedIndex = 0;
         }
-        public void updateStats() {
-            updateFilter();
+        public void updateStats()
+        {
+             // refresh subjects list
 
-            if (Students == null) return;
+            if (Students == null || Students.Count == 0) return;
 
-            failing = Students.Count(s => s.GetAverage() < 75);
-            passing = Students.Count(s => s.GetAverage() >= 75 && s.GetAverage() < 85);
-            excelling = Students.Count(s => s.GetAverage() >= 85);
-            
+            // Filter students by selected subject
+            List<Student> filteredStudents;
+            if (SubjectFilter.SelectedIndex <= 0 || SubjectFilter.SelectedItem.ToString() == "All Subjects")
+            {
+                filteredStudents = Students;
+            }
+            else
+            {
+                string abbrev = SubjectFilter.SelectedItem.ToString().Split('-')[0].Trim();
+                filteredStudents = Students.Where(s => s.subject.Trim() == abbrev).ToList();
+            }
 
-            
-            Student BS = Students.OrderByDescending(s => s.GetAverage()).FirstOrDefault();
-            Student WS = Students.OrderBy(s => s.GetAverage()).FirstOrDefault();
+            // Handle empty filtered list
+            if (filteredStudents.Count == 0)
+            {
+                BS_Grade.Text = WS_Grade.Text = "-";
+                Grades.Series.Clear();
+                return;
+            }
+
+            failing = filteredStudents.Count(s => s.GetAverage() < 75);
+            passing = filteredStudents.Count(s => s.GetAverage() >= 75 && s.GetAverage() < 85);
+            excelling = filteredStudents.Count(s => s.GetAverage() >= 85);
+
+            Student BS = filteredStudents.OrderByDescending(s => s.GetAverage()).First();
+            Student WS = filteredStudents.OrderBy(s => s.GetAverage()).First();
 
             BestStudent.name = BS.name;
             BestStudent.ID = BS.ID;
@@ -64,17 +82,16 @@ namespace Acadex0._1
             WorstStudent.name = WS.name;
             WorstStudent.ID = WS.ID;
             WorstStudent.section = WS.section;
-            WorstStudent.subject= WS.subject;
-            string Temp = "";
-            Temp+= BS.GetAverage();
-            BS_Grade.Text = Temp;
-            Temp = "";
-            Temp += WS.GetAverage();
-            WS_Grade.Text=Temp;
+            WorstStudent.subject = WS.subject;
+
+            BS_Grade.Text = BS.GetAverage().ToString("F2");
+            WS_Grade.Text = WS.GetAverage().ToString("F2");
+
             BestStudent.updateTab();
             WorstStudent.updateTab();
             updateChart();
         }
+
 
         private void updateChart()
         {
@@ -99,6 +116,9 @@ namespace Acadex0._1
             series.IsValueShownAsLabel = true;
         }
 
-
+        private void filter_Click(object sender, EventArgs e)
+        {
+            updateStats();
+        }
     }
 }

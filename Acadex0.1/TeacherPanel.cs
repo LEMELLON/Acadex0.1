@@ -53,6 +53,7 @@ namespace Acadex0._1
         {
             switchPanel(gradeStatistics1);
             gradeStatistics1.updateStats();
+            gradeStatistics1.updateFilter();
         }
     }
 }

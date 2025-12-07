@@ -46,7 +46,7 @@ namespace Acadex0._1
         public void removeModeOff()
         {
             remove.Hide();
-            removeMode = true;
+            removeMode = false;
         }
 
         private void Tab_Clicked(object sender, EventArgs e)

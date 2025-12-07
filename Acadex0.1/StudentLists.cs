@@ -41,15 +41,35 @@ namespace Acadex0._1
                     MySubjects.Add(subjectDef);
                 }
             }
-
-            DebugShowSubjects();
+            UpdateSections();
         }
-        private void DebugShowSubjects()
-        {
-            string result = string.Join("\n",
-                MySubjects.Select(s => $"{s.abbreviation} - {s.name}"));
 
-            MessageBox.Show(result == "" ? "No subjects found" : result);
+
+        public List<string> MySections = new List<string>();
+
+        private void UpdateSections()
+        {
+            // Clear the list so old/unused sections disappear
+            MySections.Clear();
+
+            // Loop through all students
+            foreach (var stu in Students)
+            {
+                // Add section only if it's not already in the list
+                if (!string.IsNullOrEmpty(stu.section) && !MySections.Contains(stu.section))
+                {
+                    MySections.Add(stu.section);
+                }
+            }
+
+            // Optional: debug output
+            DebugShowSections();
+        }
+
+        private void DebugShowSections()
+        {
+            string result = string.Join("\n", MySections);
+            MessageBox.Show(result == "" ? "No sections found" : result);
         }
 
         public static List<Student> Students = new List<Student>();
@@ -94,10 +114,12 @@ namespace Acadex0._1
                 thisTab.subject = student.subject;
                 thisTab.Dock = DockStyle.Top;
 
+                thisTab.StudentListLoc = index;
+
                 thisTab.OpenStudentInfo += OnStudentTabClicked;
                 thisTab.removeStudentInfo += OnStudentTabRemoved;
 
-                thisTab.StudentListLoc = index;  
+                  
                 index++;
 
                 StudentListBar.Controls.Add(thisTab);
