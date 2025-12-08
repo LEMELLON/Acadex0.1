@@ -21,6 +21,7 @@ namespace Acadex0._1
         };
 
         public static List<Student> Students = new List<Student>();
+        public static List<Student> LoadedStudents = new List<Student>();
 
         static DataBase1()
         {

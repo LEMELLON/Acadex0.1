@@ -51,7 +51,7 @@ namespace Acadex0._1
 
         private void Tab_Clicked(object sender, EventArgs e)
         {
-            if (!removeMode) OpenStudentInfo?.Invoke(StudentListLoc);
+            OpenStudentInfo?.Invoke(StudentListLoc);
              
         }
 

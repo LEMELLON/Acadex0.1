@@ -8,12 +8,29 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using static System.Collections.Specialized.BitVector32;
 
 namespace Acadex0._1
 {
     public partial class StudentLists : UserControl
     {
+        public StudentLists()
+        {
+            InitializeComponent();
+            inputStudent.SubmitClicked += InputStudent_SubmitClicked;
+            Toolset.MakeRounded(List_Panel, 10);
+            Toolset.MakeRounded(StudentAddBar, 10);
+            Toolset.MakeRounded(SortBox, 10);
+            Toolset.MakeRounded(Picture_Panel, 10);
+            Toolset.MakeRounded(Graph_Panel, 10);
+            Toolset.MakeTransparent(Banner,Banner_Pic);
+            Toolset.MakeTransparent(Banne_Quote,Banner_Pic);
+            MyStudents = Students;
+
+        }
+
+
         InputStudent inputStudent = new InputStudent();
         public static bool isInStudents(Student temp)
         {
@@ -26,26 +43,35 @@ namespace Acadex0._1
 
 
         public List<(string abbreviation, string name)> MySubjects = new List<(string abbreviation, string name)>();
+        public List<(string abbreviation, int amount)> MySubjectsAmount = new List<(string abbreviation, int amount)>();
 
         private void UpdateSubjects()
         {
             MySubjects.Clear();
+            MySubjectsAmount.Clear();
 
             foreach (var stu in Students)
             {
-                // Find the subject definition in the master list
                 var subjectDef = DataBase1.Subjects
                     .FirstOrDefault(s => s.abbreviation == stu.subject);
 
-                // Add to MySubjects only if it exists and is not already added
                 if (subjectDef != default && !MySubjects.Any(x => x.abbreviation == subjectDef.abbreviation))
                 {
                     MySubjects.Add(subjectDef);
                 }
             }
+
+            // --- count how many students for each subject ---
+            foreach (var sub in MySubjects)
+            {
+                int count = Students.Count(s => s.subject == sub.abbreviation);
+                MySubjectsAmount.Add((sub.abbreviation, count));
+            }
+
             UpdateSections();
             updateFilter();
         }
+
 
 
         public List<string> MySections = new List<string>();
@@ -73,18 +99,12 @@ namespace Acadex0._1
         {
             Students.Add(student);
         }
-        public StudentLists()
-        {   
-            InitializeComponent();
-            inputStudent.SubmitClicked += InputStudent_SubmitClicked;
-            
-            MyStudents = Students;
 
-        }
 
         private void newStudent_Click(object sender, EventArgs e)
         {
             inputStudent.Show();
+            inputStudent.BringToFront();
             removeMode = false;
             foreach (Control c in StudentListBar.Controls)
             {
@@ -94,11 +114,12 @@ namespace Acadex0._1
                 }
             }
         }
-        public void updateList() {
-            
-            UpdateSubjects();
+        public void updateList()
+        {
 
-            
+            UpdateSubjects();
+            updateSubChart();
+
 
             MyStudents = Students;
             StudentListBar.Controls.Clear();
@@ -106,9 +127,9 @@ namespace Acadex0._1
             foreach (Student student in Students)
             {
                 StudentTab thisTab = new StudentTab();
-                
-                thisTab.name=student.name;
-                thisTab.ID=student.ID;
+
+                thisTab.name = student.name;
+                thisTab.ID = student.ID;
                 thisTab.section = student.section;
                 thisTab.subject = student.subject;
                 thisTab.Dock = DockStyle.Top;
@@ -118,14 +139,50 @@ namespace Acadex0._1
                 thisTab.OpenStudentInfo += OnStudentTabClicked;
                 thisTab.removeStudentInfo += OnStudentTabRemoved;
 
-                  
+
                 index++;
 
                 StudentListBar.Controls.Add(thisTab);
             }
-            
+
+
             filterList();
         }
+
+        public void updateFilter()
+        {
+            // --- Subject Filter ---
+            if (MySubjects != null)
+            {
+                subjectFillter.Items.Clear();
+                subjectFillter.Items.Add("All Subjects");
+
+                foreach (var s in MySubjects)
+                {
+                    subjectFillter.Items.Add($"{s.abbreviation} - {s.name}");
+                }
+
+                subjectFillter.SelectedIndex = 0;
+            }
+
+            // --- Section Filter ---
+            if (MySections != null)
+            {
+                sectionFilter.Items.Clear();
+                sectionFilter.Items.Add("All Sections");
+
+                foreach (var sec in MySections)
+                {
+                    sectionFilter.Items.Add(sec);
+                }
+
+                sectionFilter.SelectedIndex = 0;
+            }
+        }
+        /// <summary>
+        /// BUTTONS
+        /// </summary>
+
 
         public void OnStudentTabClicked(int index) {
             OpenStudentInfo?.Invoke(index);
@@ -248,34 +305,37 @@ namespace Acadex0._1
                 StudentListBar.Controls.Add(thisTab);
             }
         }
-        public void updateFilter()
+        private void updateSubChart()
         {
-            // --- Subject Filter ---
-            if (MySubjects != null)
+            Series series;
+
+            // Create or get the series
+            if (SubjectChart.Series.Count == 0)
             {
-                subjectFillter.Items.Clear();
-                subjectFillter.Items.Add("All Subjects");
-
-                foreach (var s in MySubjects)
+                series = SubjectChart.Series.Add("subject");
+            }
+            else
+            {
+                if (SubjectChart.Series.IndexOf("subject") >= 0)
+                    series = SubjectChart.Series["subject"];
+                else
                 {
-                    subjectFillter.Items.Add($"{s.abbreviation} - {s.name}");
+                    series = SubjectChart.Series[0];
+                    series.Name = "subject";
                 }
-
-                subjectFillter.SelectedIndex = 0;
             }
 
-            // --- Section Filter ---
-            if (MySections != null)
+            // Clear old points
+            series.Points.Clear();
+
+            // Show values on the bars
+            series.IsValueShownAsLabel = true;
+
+
+            // Add data points
+            foreach (var item in MySubjectsAmount)
             {
-                sectionFilter.Items.Clear();
-                sectionFilter.Items.Add("All Sections");
-
-                foreach (var sec in MySections)
-                {
-                    sectionFilter.Items.Add(sec);
-                }
-
-                sectionFilter.SelectedIndex = 0;
+                series.Points.AddXY(item.abbreviation, item.amount);
             }
         }
 

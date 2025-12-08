@@ -35,31 +35,40 @@
             // 
             // MainPanel
             // 
+            this.MainPanel.AutoSize = true;
+            this.MainPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.MainPanel.Controls.Add(this.teacherPanel1);
-            this.MainPanel.Location = new System.Drawing.Point(2, 0);
+            this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MainPanel.Location = new System.Drawing.Point(0, 0);
             this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(650, 500);
+            this.MainPanel.Size = new System.Drawing.Size(1482, 853);
             this.MainPanel.TabIndex = 1;
             // 
             // teacherPanel1
             // 
-            this.teacherPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(244)))), ((int)(((byte)(237)))));
-            this.teacherPanel1.Location = new System.Drawing.Point(-3, 0);
+            this.teacherPanel1.AutoSize = true;
+            this.teacherPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.teacherPanel1.BackColor = System.Drawing.Color.White;
+            this.teacherPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.teacherPanel1.Location = new System.Drawing.Point(0, 0);
             this.teacherPanel1.Name = "teacherPanel1";
-            this.teacherPanel1.Size = new System.Drawing.Size(650, 500);
+            this.teacherPanel1.Size = new System.Drawing.Size(1482, 853);
             this.teacherPanel1.TabIndex = 1;
             // 
             // Acadex
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(832, 498);
+            this.ClientSize = new System.Drawing.Size(1482, 853);
             this.Controls.Add(this.MainPanel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Acadex";
-            this.Text = "Form1";
+            this.Text = "AcaDex";
             this.Load += new System.EventHandler(this.Acadex_Load);
             this.MainPanel.ResumeLayout(false);
+            this.MainPanel.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

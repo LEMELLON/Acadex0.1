@@ -15,8 +15,7 @@ namespace Acadex0._1
         public TeacherPanel()
         {
             InitializeComponent();
-            MakeRounded(panel1,30);
-            MakeRounded(Logo, 50);
+            MakeRounded(Logo, 28);
             this.Dock = DockStyle.Fill;
             gradeStatistics1.loadStats(students_Panel1.MyStudents, students_Panel1.MySubjects,students_Panel1.MySections);
         }

@@ -19,6 +19,11 @@ namespace Acadex0._1
         public GradeStatistics()
         {
             InitializeComponent();
+            Toolset.MakeRounded(Chart_Panel,10);
+            Toolset.MakeRounded(Banner_Pannel,10);
+            Toolset.MakeRounded(Sort_Panel,10);
+            Toolset.MakeRounded(H_Panel,10);
+            Toolset.MakeRounded(W_Panel,10);
 
         }
         private int failing;
@@ -112,8 +117,8 @@ namespace Acadex0._1
 
             // --- Calculate stats ---
             failing = filteredStudents.Count(s => s.GetAverage() < 75);
-            passing = filteredStudents.Count(s => s.GetAverage() >= 75 && s.GetAverage() < 85);
-            excelling = filteredStudents.Count(s => s.GetAverage() >= 85);
+            passing = filteredStudents.Count(s => s.GetAverage() >= 75 && s.GetAverage() < 89);
+            excelling = filteredStudents.Count(s => s.GetAverage() >= 89);
 
             Student BS = filteredStudents.OrderByDescending(s => s.GetAverage()).First();
             Student WS = filteredStudents.OrderBy(s => s.GetAverage()).First();
@@ -147,19 +152,20 @@ namespace Acadex0._1
 
             // Add data points
             var failingPoint = series.Points.AddXY("Failing", failing);
-            series.Points[failingPoint].Color = Color.Red;
+            series.Points[failingPoint].Color = Color.FromArgb(255, 192, 192);
 
             var passingPoint = series.Points.AddXY("Passing", passing);
-            series.Points[passingPoint].Color = Color.Blue;
+            series.Points[passingPoint].Color = Color.FromArgb(192, 192, 255);
 
             var excellingPoint = series.Points.AddXY("Excelling", excelling);
-            series.Points[excellingPoint].Color = Color.Green;
+            series.Points[excellingPoint].Color = Color.FromArgb(192, 255, 192); ;
 
             Grades.Series.Add(series);
 
             // Optional: show percentage labels
             series.IsValueShownAsLabel = true;
         }
+
 
         private void filter_Click(object sender, EventArgs e)
         {

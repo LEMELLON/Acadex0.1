@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Acadex0._1
@@ -8,9 +9,14 @@ namespace Acadex0._1
     {
         public Student student;
 
+
         public Student_InfoPanel()
         {
             InitializeComponent();
+            Toolset.MakeRounded(Info_Panel,10);
+            Toolset.MakeRounded(Grades_Panel2, 10);
+            Toolset.MakeRounded(Average_Panel, 10);
+            Toolset.MakeRounded(Scoring_Panel, 10);
             Grades.CellValidating += Grades_CellValidating;
         }
 
@@ -19,11 +25,13 @@ namespace Acadex0._1
             this.StudentName.Text = student.name;
             this.StudentSection.Text = student.section;
             this.StudentID.Text = student.ID;
-            this.StudentSubject.Text = student.subject;
+            this.StudentSubject.Text = Toolset.GetSubjectName(student.subject);
             InvalidInputText.Text = "";
             ActivityName.Text = "";
             invalidInput_Weight.Text = "";
+
             Weight.Text = ""; // if you have a TextBox for weight input
+            
             updateGrades();
         }
 
@@ -48,6 +56,23 @@ namespace Acadex0._1
             Grades.Rows.Clear();
 
             student_Grade.Text = student.GetAverage().ToString("F2");
+            if (student.GetAverage() >= 89)
+            {
+                student_Grade.BackColor = Color.FromArgb(192, 255, 192);
+                student_Grade.ForeColor = Color.Black;
+            }
+            else if (student.GetAverage() >= 75)
+            {
+                student_Grade.BackColor = Color.FromArgb(192, 192, 255);
+                student_Grade.ForeColor = Color.White;
+            }
+
+            else
+            {
+                student_Grade.BackColor = Color.FromArgb(255, 192, 192);
+                student_Grade.ForeColor = Color.White;
+            }
+
 
             Grades.Columns.Add("Activity", "Activity");
             Grades.Columns.Add("Grade", "Grade");
@@ -117,64 +142,66 @@ namespace Acadex0._1
 
         private void updateButton_Click(object sender, EventArgs e)
         {
-            // Keep a backup of existing weights so we can restore them
-            List<Tuple<string, string, string>> oldGrades = new List<Tuple<string, string, string>>(student.StudentGrades);
+            // Backup current grades
+            var backupGrades = new List<Tuple<string, string, string>>(student.StudentGrades);
 
-            // Clear and rebuild
-            student.StudentGrades.Clear();
-
-            int index = 0; // for tracking original weights
+            var newGrades = new List<Tuple<string, string, string>>();
 
             foreach (DataGridViewRow row in Grades.Rows)
             {
                 if (row.IsNewRow) continue;
 
                 string activity = row.Cells["Activity"].Value?.ToString() ?? "";
-                string grade = row.Cells["Grade"].Value?.ToString() ?? "";
+                string gradeStr = row.Cells["Grade"].Value?.ToString() ?? "";
                 string weightStr = row.Cells["Weight"].Value?.ToString() ?? "";
 
-                // Validate name + grade
-                if (string.IsNullOrWhiteSpace(activity) ||
-                    !float.TryParse(grade, out float g) || g < 0 || g > 100)
+                // Validate activity
+                if (string.IsNullOrWhiteSpace(activity))
                 {
-                    MessageBox.Show($"Invalid entry: Activity='{activity}', Grade='{grade}'");
-                    continue;
+                    MessageBox.Show("Activity name cannot be empty.");
+                    updateGradesFromBackup(backupGrades);
+                    return;
                 }
 
-                // Validate weight input format
-                float w;
-                bool parsed = float.TryParse(weightStr, out w);
-
-                if (!parsed || w <= 0 || w > 1)
+                // Validate grade
+                if (!float.TryParse(gradeStr, out float grade) || grade < 0 || grade > 100)
                 {
-                    // Restore original weight
-                    string oldWeight = oldGrades[index].Item3;
-                    MessageBox.Show($"Invalid weight '{weightStr}'. Restoring previous weight: {oldWeight}");
-
-                    student.StudentGrades.Add(Tuple.Create(activity, grade, oldWeight));
-                    index++;
-                    continue;
+                    MessageBox.Show("Grade must be a number between 0 and 100.");
+                    updateGradesFromBackup(backupGrades);
+                    return;
                 }
 
-                // Validate weight using IsValidWeight
-                if (!student.IsValidWeight(w))
+                // Validate weight
+                if (!float.TryParse(weightStr, out float weight) || weight <= 0 || weight > 1)
                 {
-                    // Restore old weight
-                    string oldWeight = oldGrades[index].Item3;
-                    MessageBox.Show($"Weight {w} would exceed total 1. Restoring previous weight {oldWeight}");
-
-                    student.StudentGrades.Add(Tuple.Create(activity, grade, oldWeight));
-                    index++;
-                    continue;
+                    MessageBox.Show("Weight must be a decimal between 0 and 1.");
+                    updateGradesFromBackup(backupGrades);
+                    return;
                 }
 
-                // Valid input — save normally
-                student.StudentGrades.Add(Tuple.Create(activity, grade, w.ToString("F2")));
-                index++;
+                newGrades.Add(Tuple.Create(activity, gradeStr, weight.ToString("F2")));
             }
 
-            updateGrades();
+            // Validate total weights
+            student.StudentGrades = new List<Tuple<string, string, string>>(newGrades);
+            if (!student.IsValidWeight(0))
+            {
+                MessageBox.Show("Total weights exceed 1. Resetting data.");
+                updateGradesFromBackup(backupGrades);
+                return;
+            }
+
+            // Save to database
             DataBase1.UpdateGrades();
+
+            // Refresh grid
+            updateGrades();
+        }
+
+        private void updateGradesFromBackup(List<Tuple<string, string, string>> backup)
+        {
+            student.StudentGrades = new List<Tuple<string, string, string>>(backup);
+            updateGrades();
         }
 
 
@@ -208,5 +235,6 @@ namespace Acadex0._1
                 }
             }
         }
+
     }
 }

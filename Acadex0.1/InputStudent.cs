@@ -15,6 +15,7 @@ namespace Acadex0._1
         public InputStudent()
         {
             InitializeComponent();
+            Toolset.MakeRounded(panel1,10);
         }
 
         private Student student ;
@@ -66,7 +67,8 @@ namespace Acadex0._1
 
         private void comboBox1_TextChanged(object sender, EventArgs e)
         {
-
+            if (comboBox1.Text != "") label2.Text="";
+            else label2.Text= "Enter Student Number";
         }
     }
 }
