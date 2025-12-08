@@ -92,5 +92,10 @@ namespace Acadex0._1
         {
             ActivityName.Text = "";
         }
+
+        private void updateButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

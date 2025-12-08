@@ -15,20 +15,22 @@ namespace Acadex0._1
     public partial class StudentLists : UserControl
     {
         InputStudent inputStudent = new InputStudent();
-        public static bool isInStudents(Student temp) {
+        public static bool isInStudents(Student temp)
+        {
             return Students.Any(s =>
-            s.ID == temp.ID 
+                s.ID == temp.ID &&
+                s.name == temp.name &&
+                s.subject == temp.subject
             );
         }
+
 
         public List<(string abbreviation, string name)> MySubjects = new List<(string abbreviation, string name)>();
 
         private void UpdateSubjects()
         {
-            // Clear list so unused subjects disappear automatically
             MySubjects.Clear();
 
-            // Loop through all students
             foreach (var stu in Students)
             {
                 // Find the subject definition in the master list
@@ -50,10 +52,8 @@ namespace Acadex0._1
 
         private void UpdateSections()
         {
-            // Clear the list so old/unused sections disappear
             MySections.Clear();
 
-            // Loop through all students
             foreach (var stu in Students)
             {
                 // Add section only if it's not already in the list
