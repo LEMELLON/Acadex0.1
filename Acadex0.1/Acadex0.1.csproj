@@ -174,10 +174,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AcadexDatabase1.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="AcadexDatabase1_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DependentUpon>AcadexDatabase1.mdf</DependentUpon>
     </Content>
   </ItemGroup>

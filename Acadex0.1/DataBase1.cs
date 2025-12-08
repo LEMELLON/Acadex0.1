@@ -9,7 +9,7 @@ namespace Acadex0._1
 {
     public class DataBase1
     {
-        private static string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\AcadexDatabase1.mdf;Integrated Security=True;Connect Timeout=30";
+        private static string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Danny B. Cantillon\OneDrive\文档\Programing\VSCODE2022\C#\DSA_Proposals\Student Organizer\Acadex0.1\AcadexDatabase1.mdf;Integrated Security=True;Connect Timeout=30";
 
         public static List<(string abbreviation, string name)> Subjects = new List<(string abbreviation, string name)>()
         {
@@ -21,13 +21,13 @@ namespace Acadex0._1
         };
 
         public static List<Student> Students = new List<Student>();
+
         static DataBase1()
         {
             LoadSubjects();
             LoadStudents();
             LoadGrades();
         }
-
 
         private static void LoadSubjects()
         {
@@ -71,7 +71,7 @@ namespace Acadex0._1
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                SqlCommand cmd = new SqlCommand("SELECT Id, Subject, Activity, Grade FROM StudentGrades", conn);
+                SqlCommand cmd = new SqlCommand("SELECT Id, Subject, Activity, Grade, Weight FROM StudentGrades", conn);
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
@@ -80,19 +80,63 @@ namespace Acadex0._1
                         string subject = reader["Subject"].ToString();
                         string activity = reader["Activity"].ToString();
                         string grade = reader["Grade"].ToString();
+                        string weight = reader["Weight"].ToString();
 
                         // Find the student
-                        Student student = Students.Find(s => s.ID == studentId);
+                        Student student = Students.Find(s => s.ID == studentId && s.subject == subject);
                         if (student != null)
                         {
-                            // Store "Subject - Activity" as key
-                            string key = $"{subject} - {activity}";
-                            student.StudentGrades.Add(new KeyValuePair<string, string>(key, grade));
+                            student.StudentGrades.Add(Tuple.Create(activity, grade, weight));
                         }
                     }
                 }
             }
         }
 
+        public static void UpdateGrades()
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+
+                foreach (var student in Students)
+                {
+                    // Delete previous grades for this student
+                    using (SqlCommand deleteCmd = new SqlCommand("DELETE FROM StudentGrades WHERE Id = @Id and Subject = @Subject", conn))
+                    {
+                        deleteCmd.Parameters.AddWithValue("@Id", student.ID);
+                        deleteCmd.Parameters.AddWithValue("@Subject", student.subject);
+                        deleteCmd.ExecuteNonQuery();
+                    }
+
+                    // Insert current grades
+                    foreach (var grade in student.StudentGrades)
+                    {
+                        string[] parts = grade.Item1.Split(new string[] { " - " }, StringSplitOptions.None);
+                        string activity = parts.Length > 0 ? parts[0] : "";
+
+                        using (SqlCommand insertCmd = new SqlCommand(
+                            "INSERT INTO StudentGrades (Id,Subject, Activity, Grade, Weight) VALUES (@Id,@Subject,@Activity, @Grade, @Weight)", conn))
+                        {
+                            insertCmd.Parameters.AddWithValue("@Id", student.ID);
+                            insertCmd.Parameters.AddWithValue("@Activity", activity);
+                            insertCmd.Parameters.AddWithValue("@Subject", student.subject);
+
+                            if (float.TryParse(grade.Item2, out float g))
+                                insertCmd.Parameters.AddWithValue("@Grade", g);
+                            else
+                                insertCmd.Parameters.AddWithValue("@Grade", DBNull.Value);
+
+                            if (float.TryParse(grade.Item3, out float w))
+                                insertCmd.Parameters.AddWithValue("@Weight", w);
+                            else
+                                insertCmd.Parameters.AddWithValue("@Weight", DBNull.Value);
+
+                            insertCmd.ExecuteNonQuery();
+                        }
+                    }
+                }
+            }
+        }
     }
 }

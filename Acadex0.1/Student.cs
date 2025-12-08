@@ -8,12 +8,13 @@ namespace Acadex0._1
 {
     public class Student
     {
-            public List<KeyValuePair<string, string>> StudentGrades { get; set; }
-            public string ID;
-            private float average=0;
-            public string name;
-            public string section;
-            public string subject;
+        public List<Tuple<string, string, string>> StudentGrades { get; set; }
+
+        public string ID;
+        private float average=0;
+        public string name;
+        public string section;
+        public string subject;
             public Student(String name, String ID, String section, String subject)
             {
                 this.name = name;
@@ -21,7 +22,7 @@ namespace Acadex0._1
                 this.section = section;
                 this.subject = subject;
 
-                StudentGrades = new List<KeyValuePair<string, string>>();
+                StudentGrades = new List<Tuple<string, string, string>>();
                 
             }
 
@@ -30,17 +31,46 @@ namespace Acadex0._1
                 if (StudentGrades.Count == 0)
                     return 0f;
 
-                float sum = 0;
+                float weightedSum = 0f;
+                float totalWeight = 0f;
 
                 foreach (var grade in StudentGrades)
                 {
-                    if (int.TryParse(grade.Value, out int value))
-                        sum += value;
-                    else
-                        return 0f; // non-numeric grade found
+                    // Parse grade and weight
+                    if (float.TryParse(grade.Item2, out float g) && float.TryParse(grade.Item3, out float w))
+                    {
+                        weightedSum += g * w;
+                        totalWeight += w;
+                    }
                 }
 
-                return (float)Math.Round(sum / StudentGrades.Count, 2);
-        }
+                // Avoid division by zero
+                if (totalWeight == 0f)
+                    return 0f;
+
+                // Weighted average
+                return (float)Math.Round(weightedSum / totalWeight, 2);
+            }
+
+            public bool IsValidWeight(float newWeight)
+                {
+                    // Get all unique weights from current grades
+                    var uniqueWeights = StudentGrades
+                        .Select(g => float.TryParse(g.Item3, out float w) ? w : 0f)
+                        .Where(w => w > 0f)
+                        .Distinct()
+                        .ToList();
+
+                    // Sum of current unique weights
+                    float total = uniqueWeights.Sum();
+
+                    // If the new weight already exists, it's fine
+                    if (uniqueWeights.Contains(newWeight))
+                        return true;
+
+                    // Otherwise, check if adding it exceeds 1
+                    return (total + newWeight) <= 1f;
+                }
+
     }
 }

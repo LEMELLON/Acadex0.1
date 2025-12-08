@@ -45,6 +45,9 @@
             this.InvalidInputText = new System.Windows.Forms.Label();
             this.ActivityName = new System.Windows.Forms.Label();
             this.updateButton = new System.Windows.Forms.Button();
+            this.Weight = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.invalidInput_Weight = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Grades)).BeginInit();
             this.SuspendLayout();
@@ -64,7 +67,6 @@
             this.Grades.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Grades.Location = new System.Drawing.Point(0, 0);
             this.Grades.Name = "Grades";
-            this.Grades.ReadOnly = true;
             this.Grades.RowHeadersWidth = 51;
             this.Grades.RowTemplate.Height = 24;
             this.Grades.Size = new System.Drawing.Size(449, 220);
@@ -118,7 +120,7 @@
             // 
             // Add_StudentGrade
             // 
-            this.Add_StudentGrade.Location = new System.Drawing.Point(388, 133);
+            this.Add_StudentGrade.Location = new System.Drawing.Point(389, 85);
             this.Add_StudentGrade.Name = "Add_StudentGrade";
             this.Add_StudentGrade.Size = new System.Drawing.Size(49, 30);
             this.Add_StudentGrade.TabIndex = 6;
@@ -128,7 +130,7 @@
             // 
             // Activity_Name
             // 
-            this.Activity_Name.Location = new System.Drawing.Point(223, 137);
+            this.Activity_Name.Location = new System.Drawing.Point(224, 85);
             this.Activity_Name.Name = "Activity_Name";
             this.Activity_Name.Size = new System.Drawing.Size(158, 22);
             this.Activity_Name.TabIndex = 7;
@@ -136,7 +138,7 @@
             // 
             // Activity_Grade
             // 
-            this.Activity_Grade.Location = new System.Drawing.Point(225, 181);
+            this.Activity_Grade.Location = new System.Drawing.Point(225, 129);
             this.Activity_Grade.Name = "Activity_Grade";
             this.Activity_Grade.Size = new System.Drawing.Size(157, 22);
             this.Activity_Grade.TabIndex = 8;
@@ -146,7 +148,7 @@
             // 
             this.student_Grade.AutoSize = true;
             this.student_Grade.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.student_Grade.Location = new System.Drawing.Point(291, 43);
+            this.student_Grade.Location = new System.Drawing.Point(294, 13);
             this.student_Grade.Name = "student_Grade";
             this.student_Grade.Size = new System.Drawing.Size(55, 39);
             this.student_Grade.TabIndex = 9;
@@ -156,7 +158,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(180, 48);
+            this.label2.Location = new System.Drawing.Point(199, 13);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(89, 39);
             this.label2.TabIndex = 10;
@@ -165,7 +167,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(139, 184);
+            this.label1.Location = new System.Drawing.Point(139, 135);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(80, 16);
             this.label1.TabIndex = 11;
@@ -174,7 +176,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(168, 143);
+            this.label3.Location = new System.Drawing.Point(170, 91);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(49, 16);
             this.label3.TabIndex = 12;
@@ -185,7 +187,7 @@
             this.InvalidInputText.AutoSize = true;
             this.InvalidInputText.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.InvalidInputText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.InvalidInputText.Location = new System.Drawing.Point(184, 162);
+            this.InvalidInputText.Location = new System.Drawing.Point(194, 110);
             this.InvalidInputText.Name = "InvalidInputText";
             this.InvalidInputText.Size = new System.Drawing.Size(94, 16);
             this.InvalidInputText.TabIndex = 13;
@@ -196,7 +198,7 @@
             this.ActivityName.AutoSize = true;
             this.ActivityName.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ActivityName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.ActivityName.Location = new System.Drawing.Point(184, 106);
+            this.ActivityName.Location = new System.Drawing.Point(194, 66);
             this.ActivityName.Name = "ActivityName";
             this.ActivityName.Size = new System.Drawing.Size(94, 16);
             this.ActivityName.TabIndex = 14;
@@ -212,11 +214,43 @@
             this.updateButton.UseVisualStyleBackColor = true;
             this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
             // 
+            // Weight
+            // 
+            this.Weight.BackColor = System.Drawing.SystemColors.Window;
+            this.Weight.Location = new System.Drawing.Point(226, 170);
+            this.Weight.Name = "Weight";
+            this.Weight.Size = new System.Drawing.Size(157, 22);
+            this.Weight.TabIndex = 16;
+            this.Weight.TextChanged += new System.EventHandler(this.Weight_TextChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(122, 173);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(98, 16);
+            this.label4.TabIndex = 17;
+            this.label4.Text = "Weight (0.0-1.0)";
+            // 
+            // invalidInput_Weight
+            // 
+            this.invalidInput_Weight.AutoSize = true;
+            this.invalidInput_Weight.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.invalidInput_Weight.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.invalidInput_Weight.Location = new System.Drawing.Point(194, 154);
+            this.invalidInput_Weight.Name = "invalidInput_Weight";
+            this.invalidInput_Weight.Size = new System.Drawing.Size(94, 16);
+            this.invalidInput_Weight.TabIndex = 18;
+            this.invalidInput_Weight.Text = "Activity_Grade";
+            // 
             // Student_InfoPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
+            this.Controls.Add(this.invalidInput_Weight);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.Weight);
             this.Controls.Add(this.updateButton);
             this.Controls.Add(this.ActivityName);
             this.Controls.Add(this.InvalidInputText);
@@ -260,5 +294,8 @@
         private System.Windows.Forms.Label InvalidInputText;
         private System.Windows.Forms.Label ActivityName;
         private System.Windows.Forms.Button updateButton;
+        private System.Windows.Forms.TextBox Weight;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label invalidInput_Weight;
     }
 }
