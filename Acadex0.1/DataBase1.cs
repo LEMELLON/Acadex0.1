@@ -28,6 +28,32 @@ namespace Acadex0._1
             LoadSubjects();
             LoadStudents();
             LoadGrades();
+            LoadLoadedStudents();
+        }
+        public static void LoadLoadedStudents()
+        {
+            LoadedStudents.Clear(); // clear any previous data
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+
+                using (SqlCommand cmd = new SqlCommand("SELECT Id, Name, Section, Subject FROM StudentLoaded", conn))
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            LoadedStudents.Add(new Student(
+                                reader["Name"].ToString(),
+                                reader["Id"].ToString(),
+                                reader["Section"].ToString(),
+                                reader["Subject"].ToString()
+                            ));
+                        }
+                    }
+                }
+            }
         }
 
         private static void LoadSubjects()
@@ -93,6 +119,59 @@ namespace Acadex0._1
                 }
             }
         }
+
+        public static void SaveLoadedStudents()
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+
+                // --- Delete all existing records in StudentLoaded ---
+                using (SqlCommand clearCmd = new SqlCommand("DELETE FROM StudentLoaded", conn))
+                {
+                    clearCmd.ExecuteNonQuery();
+                }
+
+                // --- Insert all LoadedStudents ---
+                foreach (var student in LoadedStudents)
+                {
+                    using (SqlCommand insertCmd = new SqlCommand(
+                        "INSERT INTO StudentLoaded (Id, Name, Section, Subject) VALUES (@Id, @Name, @Section, @Subject)", conn))
+                    {
+                        insertCmd.Parameters.AddWithValue("@Id", student.ID);
+                        insertCmd.Parameters.AddWithValue("@Name", student.name);
+                        insertCmd.Parameters.AddWithValue("@Section", student.section);
+                        insertCmd.Parameters.AddWithValue("@Subject", student.subject);
+
+                        insertCmd.ExecuteNonQuery();
+                    }
+                }
+            }
+        }
+        public static List<Student> GetMatchingLoadedStudents()
+        {
+            List<Student> matchingStudents = new List<Student>();
+
+            foreach (var loaded in LoadedStudents)
+            {
+                // Find actual student from main list
+                var student = Students.Find(s =>
+                    s.ID == loaded.ID &&
+                    s.subject == loaded.subject &&
+                    s.name == loaded.name &&
+                    s.section == loaded.section
+                );
+
+                if (student != null)
+                {
+                    matchingStudents.Add(student);  // ✅ return the real Student object
+                }
+            }
+
+            return matchingStudents;
+        }
+
+
 
         public static void UpdateGrades()
         {

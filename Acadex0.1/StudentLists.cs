@@ -15,19 +15,32 @@ namespace Acadex0._1
 {
     public partial class StudentLists : UserControl
     {
+
         public StudentLists()
         {
             InitializeComponent();
+            // UI setup
             inputStudent.SubmitClicked += InputStudent_SubmitClicked;
             Toolset.MakeRounded(List_Panel, 10);
             Toolset.MakeRounded(StudentAddBar, 10);
             Toolset.MakeRounded(SortBox, 10);
             Toolset.MakeRounded(Picture_Panel, 10);
             Toolset.MakeRounded(Graph_Panel, 10);
-            Toolset.MakeTransparent(Banner,Banner_Pic);
-            Toolset.MakeTransparent(Banne_Quote,Banner_Pic);
+            Toolset.MakeTransparent(Banner, Banner_Pic);
+            Toolset.MakeTransparent(Banne_Quote, Banner_Pic);
+            laodList();
             MyStudents = Students;
+            
 
+        }
+        public static bool isLoaded = false;
+        public void laodList() {
+            if (!isLoaded)
+            {
+                Students = DataBase1.GetMatchingLoadedStudents();
+                updateList();
+                isLoaded = true;
+            }
         }
 
 
@@ -95,10 +108,13 @@ namespace Acadex0._1
 
         public static List<Student> Students = new List<Student>();
         public  List<Student> MyStudents ;
+        public  List<Student> MyLaodedStudents ;
         public static void AddStudent(Student student)
         {
             Students.Add(student);
+            
         }
+
 
 
         private void newStudent_Click(object sender, EventArgs e)
@@ -121,7 +137,6 @@ namespace Acadex0._1
             updateSubChart();
 
 
-            MyStudents = Students;
             StudentListBar.Controls.Clear();
             int index = 0;
             foreach (Student student in Students)
@@ -144,10 +159,13 @@ namespace Acadex0._1
 
                 StudentListBar.Controls.Add(thisTab);
             }
-
+            DataBase1.LoadedStudents = Students;
+            DataBase1.SaveLoadedStudents();
 
             filterList();
         }
+
+
 
         public void updateFilter()
         {
