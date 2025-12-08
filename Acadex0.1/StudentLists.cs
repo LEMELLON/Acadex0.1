@@ -196,7 +196,31 @@ namespace Acadex0._1
 
                 sectionFilter.SelectedIndex = 0;
             }
+
+            // --- ID Filter (ComboBox) ---
+            if (ID_Filter != null) // ComboBox exists
+            {
+                ID_Filter.Items.Clear();
+                ID_Filter.Items.Add("All IDs");
+
+                // Get distinct student IDs
+                var ids = Students
+                    .Where(s => !string.IsNullOrWhiteSpace(s.ID))
+                    .Select(s => s.ID.Trim())
+                    .Distinct()
+                    .OrderBy(id => id)
+                    .ToList();
+
+
+                foreach (string id in ids)
+                {
+                    ID_Filter.Items.Add(id);
+                }
+
+                ID_Filter.SelectedIndex = 0;
+            }
         }
+
         /// <summary>
         /// BUTTONS
         /// </summary>
@@ -278,8 +302,14 @@ namespace Acadex0._1
             {
                 string section = sectionFilter.SelectedItem.ToString();
                 filteredStudents = filteredStudents.Where(s => s.section.Trim() == section).ToList();
-            }
 
+            }
+            // --- Filter by ID ---
+if (ID_Filter.SelectedIndex > 0) // 0 = "All IDs"
+{
+    string selectedID = ID_Filter.SelectedItem.ToString();
+    filteredStudents = filteredStudents.Where(s => s.ID == selectedID).ToList();
+}
             // --- Update MyStudents ---
             MyStudents = filteredStudents;
 

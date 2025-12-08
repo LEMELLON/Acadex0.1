@@ -44,31 +44,32 @@
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.List_Panel = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
             this.StudentAddBar = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.SortBox = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
             this.Picture_Panel = new System.Windows.Forms.Panel();
+            this.Banne_Quote = new System.Windows.Forms.Label();
+            this.Banner = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.Banner_Pic = new System.Windows.Forms.PictureBox();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.Graph_Panel = new System.Windows.Forms.Panel();
-            this.Banner_Pic = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.Banner = new System.Windows.Forms.Label();
-            this.Banne_Quote = new System.Windows.Forms.Label();
+            this.SubjectChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.SubjectChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.ID_Filter = new System.Windows.Forms.ComboBox();
             this.List_Panel.SuspendLayout();
             this.StudentAddBar.SuspendLayout();
             this.SortBox.SuspendLayout();
             this.Picture_Panel.SuspendLayout();
-            this.Graph_Panel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Banner_Pic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Banner_Pic)).BeginInit();
+            this.Graph_Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SubjectChart)).BeginInit();
             this.SuspendLayout();
             // 
@@ -117,7 +118,7 @@
             // subjectFillter
             // 
             this.subjectFillter.FormattingEnabled = true;
-            this.subjectFillter.Location = new System.Drawing.Point(120, 41);
+            this.subjectFillter.Location = new System.Drawing.Point(120, 20);
             this.subjectFillter.Name = "subjectFillter";
             this.subjectFillter.Size = new System.Drawing.Size(226, 24);
             this.subjectFillter.TabIndex = 5;
@@ -127,7 +128,7 @@
             this.filtter.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.filtter.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.filtter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.filtter.Location = new System.Drawing.Point(17, 81);
+            this.filtter.Location = new System.Drawing.Point(19, 76);
             this.filtter.Name = "filtter";
             this.filtter.Size = new System.Drawing.Size(85, 46);
             this.filtter.TabIndex = 6;
@@ -138,7 +139,7 @@
             // sectionFilter
             // 
             this.sectionFilter.FormattingEnabled = true;
-            this.sectionFilter.Location = new System.Drawing.Point(120, 101);
+            this.sectionFilter.Location = new System.Drawing.Point(120, 61);
             this.sectionFilter.Name = "sectionFilter";
             this.sectionFilter.Size = new System.Drawing.Size(226, 24);
             this.sectionFilter.TabIndex = 7;
@@ -210,6 +211,17 @@
             this.List_Panel.Size = new System.Drawing.Size(675, 470);
             this.List_Panel.TabIndex = 13;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Gray;
+            this.label6.Location = new System.Drawing.Point(606, 29);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(21, 16);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "##";
+            // 
             // StudentAddBar
             // 
             this.StudentAddBar.BackColor = System.Drawing.Color.White;
@@ -235,6 +247,7 @@
             // SortBox
             // 
             this.SortBox.BackColor = System.Drawing.Color.White;
+            this.SortBox.Controls.Add(this.ID_Filter);
             this.SortBox.Controls.Add(this.sectionFilter);
             this.SortBox.Controls.Add(this.filtter);
             this.SortBox.Controls.Add(this.subjectFillter);
@@ -242,17 +255,6 @@
             this.SortBox.Name = "SortBox";
             this.SortBox.Size = new System.Drawing.Size(372, 144);
             this.SortBox.TabIndex = 15;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Gray;
-            this.label6.Location = new System.Drawing.Point(606, 29);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(21, 16);
-            this.label6.TabIndex = 13;
-            this.label6.Text = "##";
             // 
             // Picture_Panel
             // 
@@ -265,6 +267,48 @@
             this.Picture_Panel.Name = "Picture_Panel";
             this.Picture_Panel.Size = new System.Drawing.Size(674, 245);
             this.Picture_Panel.TabIndex = 18;
+            // 
+            // Banne_Quote
+            // 
+            this.Banne_Quote.AutoSize = true;
+            this.Banne_Quote.BackColor = System.Drawing.Color.Black;
+            this.Banne_Quote.Font = new System.Drawing.Font("Verdana", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Banne_Quote.ForeColor = System.Drawing.Color.White;
+            this.Banne_Quote.Location = new System.Drawing.Point(16, 159);
+            this.Banne_Quote.Name = "Banne_Quote";
+            this.Banne_Quote.Size = new System.Drawing.Size(409, 22);
+            this.Banne_Quote.TabIndex = 3;
+            this.Banne_Quote.Text = "“Focus on growth. Acadex handles the rest.”\r\n";
+            // 
+            // Banner
+            // 
+            this.Banner.AutoSize = true;
+            this.Banner.BackColor = System.Drawing.Color.Black;
+            this.Banner.Font = new System.Drawing.Font("Verdana", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Banner.ForeColor = System.Drawing.Color.White;
+            this.Banner.Location = new System.Drawing.Point(14, 43);
+            this.Banner.Name = "Banner";
+            this.Banner.Size = new System.Drawing.Size(384, 104);
+            this.Banner.TabIndex = 2;
+            this.Banner.Text = "Your PROGRESS \r\nORGANIZED.";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Location = new System.Drawing.Point(547, 139);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(8, 8);
+            this.pictureBox2.TabIndex = 1;
+            this.pictureBox2.TabStop = false;
+            // 
+            // Banner_Pic
+            // 
+            this.Banner_Pic.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Banner_Pic.BackgroundImage")));
+            this.Banner_Pic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Banner_Pic.Location = new System.Drawing.Point(-35, 1);
+            this.Banner_Pic.Name = "Banner_Pic";
+            this.Banner_Pic.Size = new System.Drawing.Size(750, 244);
+            this.Banner_Pic.TabIndex = 0;
+            this.Banner_Pic.TabStop = false;
             // 
             // monthCalendar1
             // 
@@ -313,64 +357,6 @@
             this.Graph_Panel.Size = new System.Drawing.Size(372, 374);
             this.Graph_Panel.TabIndex = 19;
             // 
-            // Banner_Pic
-            // 
-            this.Banner_Pic.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Banner_Pic.BackgroundImage")));
-            this.Banner_Pic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Banner_Pic.Location = new System.Drawing.Point(-35, 1);
-            this.Banner_Pic.Name = "Banner_Pic";
-            this.Banner_Pic.Size = new System.Drawing.Size(750, 244);
-            this.Banner_Pic.TabIndex = 0;
-            this.Banner_Pic.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Location = new System.Drawing.Point(547, 139);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(8, 8);
-            this.pictureBox2.TabIndex = 1;
-            this.pictureBox2.TabStop = false;
-            // 
-            // Banner
-            // 
-            this.Banner.AutoSize = true;
-            this.Banner.BackColor = System.Drawing.Color.Black;
-            this.Banner.Font = new System.Drawing.Font("Verdana", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Banner.ForeColor = System.Drawing.Color.White;
-            this.Banner.Location = new System.Drawing.Point(14, 43);
-            this.Banner.Name = "Banner";
-            this.Banner.Size = new System.Drawing.Size(397, 106);
-            this.Banner.TabIndex = 2;
-            this.Banner.Text = "Your PROGRESS \r\nORGANIZED.";
-            // 
-            // Banne_Quote
-            // 
-            this.Banne_Quote.AutoSize = true;
-            this.Banne_Quote.BackColor = System.Drawing.Color.Black;
-            this.Banne_Quote.Font = new System.Drawing.Font("Verdana", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Banne_Quote.ForeColor = System.Drawing.Color.White;
-            this.Banne_Quote.Location = new System.Drawing.Point(16, 159);
-            this.Banne_Quote.Name = "Banne_Quote";
-            this.Banne_Quote.Size = new System.Drawing.Size(409, 22);
-            this.Banne_Quote.TabIndex = 3;
-            this.Banne_Quote.Text = "“Focus on growth. Acadex handles the rest.”\r\n";
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.panel2.Location = new System.Drawing.Point(-11, 462);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(30, 219);
-            this.panel2.TabIndex = 21;
-            // 
-            // panel8
-            // 
-            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.panel8.Location = new System.Drawing.Point(26, 588);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(21, 133);
-            this.panel8.TabIndex = 23;
-            // 
             // SubjectChart
             // 
             this.SubjectChart.AccessibleRole = System.Windows.Forms.AccessibleRole.OutlineButton;
@@ -397,6 +383,30 @@
             this.SubjectChart.TabIndex = 0;
             this.SubjectChart.Text = "chart1";
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.panel2.Location = new System.Drawing.Point(-11, 462);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(30, 219);
+            this.panel2.TabIndex = 21;
+            // 
+            // panel8
+            // 
+            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.panel8.Location = new System.Drawing.Point(26, 588);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(21, 133);
+            this.panel8.TabIndex = 23;
+            // 
+            // ID_Filter
+            // 
+            this.ID_Filter.FormattingEnabled = true;
+            this.ID_Filter.Location = new System.Drawing.Point(120, 105);
+            this.ID_Filter.Name = "ID_Filter";
+            this.ID_Filter.Size = new System.Drawing.Size(226, 24);
+            this.ID_Filter.TabIndex = 8;
+            // 
             // StudentLists
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -422,9 +432,9 @@
             this.SortBox.ResumeLayout(false);
             this.Picture_Panel.ResumeLayout(false);
             this.Picture_Panel.PerformLayout();
-            this.Graph_Panel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Banner_Pic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Banner_Pic)).EndInit();
+            this.Graph_Panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.SubjectChart)).EndInit();
             this.ResumeLayout(false);
 
@@ -461,5 +471,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.DataVisualization.Charting.Chart SubjectChart;
+        private System.Windows.Forms.ComboBox ID_Filter;
     }
 }
