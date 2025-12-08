@@ -48,6 +48,7 @@
             this.StudentAddBar = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.SortBox = new System.Windows.Forms.Panel();
+            this.ID_Filter = new System.Windows.Forms.ComboBox();
             this.Picture_Panel = new System.Windows.Forms.Panel();
             this.Banne_Quote = new System.Windows.Forms.Label();
             this.Banner = new System.Windows.Forms.Label();
@@ -62,7 +63,8 @@
             this.SubjectChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.ID_Filter = new System.Windows.Forms.ComboBox();
+            this.SortByGrade = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.List_Panel.SuspendLayout();
             this.StudentAddBar.SuspendLayout();
             this.SortBox.SuspendLayout();
@@ -128,7 +130,7 @@
             this.filtter.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.filtter.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.filtter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.filtter.Location = new System.Drawing.Point(19, 76);
+            this.filtter.Location = new System.Drawing.Point(19, 138);
             this.filtter.Name = "filtter";
             this.filtter.Size = new System.Drawing.Size(85, 46);
             this.filtter.TabIndex = 6;
@@ -247,14 +249,24 @@
             // SortBox
             // 
             this.SortBox.BackColor = System.Drawing.Color.White;
+            this.SortBox.Controls.Add(this.label7);
+            this.SortBox.Controls.Add(this.SortByGrade);
             this.SortBox.Controls.Add(this.ID_Filter);
             this.SortBox.Controls.Add(this.sectionFilter);
             this.SortBox.Controls.Add(this.filtter);
             this.SortBox.Controls.Add(this.subjectFillter);
             this.SortBox.Location = new System.Drawing.Point(740, 285);
             this.SortBox.Name = "SortBox";
-            this.SortBox.Size = new System.Drawing.Size(372, 144);
+            this.SortBox.Size = new System.Drawing.Size(372, 194);
             this.SortBox.TabIndex = 15;
+            // 
+            // ID_Filter
+            // 
+            this.ID_Filter.FormattingEnabled = true;
+            this.ID_Filter.Location = new System.Drawing.Point(120, 105);
+            this.ID_Filter.Name = "ID_Filter";
+            this.ID_Filter.Size = new System.Drawing.Size(226, 24);
+            this.ID_Filter.TabIndex = 8;
             // 
             // Picture_Panel
             // 
@@ -352,9 +364,9 @@
             // 
             this.Graph_Panel.BackColor = System.Drawing.Color.White;
             this.Graph_Panel.Controls.Add(this.SubjectChart);
-            this.Graph_Panel.Location = new System.Drawing.Point(740, 457);
+            this.Graph_Panel.Location = new System.Drawing.Point(740, 517);
             this.Graph_Panel.Name = "Graph_Panel";
-            this.Graph_Panel.Size = new System.Drawing.Size(372, 374);
+            this.Graph_Panel.Size = new System.Drawing.Size(372, 314);
             this.Graph_Panel.TabIndex = 19;
             // 
             // SubjectChart
@@ -379,7 +391,7 @@
             series1.Name = "Series1";
             series1.ShadowColor = System.Drawing.Color.White;
             this.SubjectChart.Series.Add(series1);
-            this.SubjectChart.Size = new System.Drawing.Size(372, 374);
+            this.SubjectChart.Size = new System.Drawing.Size(372, 314);
             this.SubjectChart.TabIndex = 0;
             this.SubjectChart.Text = "chart1";
             // 
@@ -399,13 +411,21 @@
             this.panel8.Size = new System.Drawing.Size(21, 133);
             this.panel8.TabIndex = 23;
             // 
-            // ID_Filter
+            // SortByGrade
             // 
-            this.ID_Filter.FormattingEnabled = true;
-            this.ID_Filter.Location = new System.Drawing.Point(120, 105);
-            this.ID_Filter.Name = "ID_Filter";
-            this.ID_Filter.Size = new System.Drawing.Size(226, 24);
-            this.ID_Filter.TabIndex = 8;
+            this.SortByGrade.Location = new System.Drawing.Point(121, 162);
+            this.SortByGrade.Name = "SortByGrade";
+            this.SortByGrade.Size = new System.Drawing.Size(225, 22);
+            this.SortByGrade.TabIndex = 9;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(118, 142);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(121, 16);
+            this.label7.TabIndex = 10;
+            this.label7.Text = "Enter Score Range";
             // 
             // StudentLists
             // 
@@ -430,6 +450,7 @@
             this.StudentAddBar.ResumeLayout(false);
             this.StudentAddBar.PerformLayout();
             this.SortBox.ResumeLayout(false);
+            this.SortBox.PerformLayout();
             this.Picture_Panel.ResumeLayout(false);
             this.Picture_Panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -472,5 +493,7 @@
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.DataVisualization.Charting.Chart SubjectChart;
         private System.Windows.Forms.ComboBox ID_Filter;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox SortByGrade;
     }
 }

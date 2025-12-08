@@ -305,11 +305,23 @@ namespace Acadex0._1
 
             }
             // --- Filter by ID ---
-if (ID_Filter.SelectedIndex > 0) // 0 = "All IDs"
-{
-    string selectedID = ID_Filter.SelectedItem.ToString();
-    filteredStudents = filteredStudents.Where(s => s.ID == selectedID).ToList();
-}
+            if (ID_Filter.SelectedIndex > 0) // 0 = "All IDs"
+            {
+                string selectedID = ID_Filter.SelectedItem.ToString();
+                filteredStudents = filteredStudents.Where(s => s.ID == selectedID).ToList();
+            }
+
+            // --- Filter by Score/Grade ---
+            if (!string.IsNullOrWhiteSpace(SortByGrade.Text))
+            {
+                if (float.TryParse(SortByGrade.Text.Trim(), out float minGrade))
+                {
+                    filteredStudents = filteredStudents
+                        .Where(s => s.GetAverage() >= minGrade)
+                        .ToList();
+                }
+            }
+
             // --- Update MyStudents ---
             MyStudents = filteredStudents;
 

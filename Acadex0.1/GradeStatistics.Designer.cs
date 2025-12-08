@@ -41,7 +41,9 @@
             this.SectionFilter = new System.Windows.Forms.ComboBox();
             this.Chart_Panel = new System.Windows.Forms.Panel();
             this.W_Panel = new System.Windows.Forms.Panel();
+            this.WorstStudent = new Acadex0._1.StudentTab();
             this.H_Panel = new System.Windows.Forms.Panel();
+            this.BestStudent = new Acadex0._1.StudentTab();
             this.Sort_Panel = new System.Windows.Forms.Panel();
             this.Banner_Pannel = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
@@ -56,8 +58,6 @@
             this.panel12 = new System.Windows.Forms.Panel();
             this.panel13 = new System.Windows.Forms.Panel();
             this.panel14 = new System.Windows.Forms.Panel();
-            this.BestStudent = new Acadex0._1.StudentTab();
-            this.WorstStudent = new Acadex0._1.StudentTab();
             ((System.ComponentModel.ISupportInitialize)(this.Grades)).BeginInit();
             this.Chart_Panel.SuspendLayout();
             this.W_Panel.SuspendLayout();
@@ -174,6 +174,13 @@
             this.W_Panel.Size = new System.Drawing.Size(525, 130);
             this.W_Panel.TabIndex = 13;
             // 
+            // WorstStudent
+            // 
+            this.WorstStudent.Location = new System.Drawing.Point(13, 60);
+            this.WorstStudent.Name = "WorstStudent";
+            this.WorstStudent.Size = new System.Drawing.Size(500, 50);
+            this.WorstStudent.TabIndex = 4;
+            // 
             // H_Panel
             // 
             this.H_Panel.BackColor = System.Drawing.Color.White;
@@ -184,6 +191,13 @@
             this.H_Panel.Name = "H_Panel";
             this.H_Panel.Size = new System.Drawing.Size(525, 130);
             this.H_Panel.TabIndex = 14;
+            // 
+            // BestStudent
+            // 
+            this.BestStudent.Location = new System.Drawing.Point(13, 68);
+            this.BestStudent.Name = "BestStudent";
+            this.BestStudent.Size = new System.Drawing.Size(500, 50);
+            this.BestStudent.TabIndex = 3;
             // 
             // Sort_Panel
             // 
@@ -308,20 +322,6 @@
             this.panel14.Name = "panel14";
             this.panel14.Size = new System.Drawing.Size(75, 12);
             this.panel14.TabIndex = 25;
-            // 
-            // BestStudent
-            // 
-            this.BestStudent.Location = new System.Drawing.Point(13, 68);
-            this.BestStudent.Name = "BestStudent";
-            this.BestStudent.Size = new System.Drawing.Size(500, 50);
-            this.BestStudent.TabIndex = 3;
-            // 
-            // WorstStudent
-            // 
-            this.WorstStudent.Location = new System.Drawing.Point(13, 60);
-            this.WorstStudent.Name = "WorstStudent";
-            this.WorstStudent.Size = new System.Drawing.Size(500, 50);
-            this.WorstStudent.TabIndex = 4;
             // 
             // GradeStatistics
             // 
